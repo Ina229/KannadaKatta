@@ -14,10 +14,9 @@ import LearnGreetings from './components/LearnGreetings';
 import PracticeMatch from './components/PracticeMatch';
 import WordBuilder from './components/WordBuilder';
 import MiniGame from './components/MiniGame';
-import CountNumbers from './components/CountNumbers';
-import Celebration from './components/Celebration';
-import SignUpPage from './components/SignUpPage';
 import LandingPage from './components/LandingPage';
+import AuthScreen from './components/AuthScreen';
+import SignInPage from './components/SignInPage';
 import AuthScreen from './components/AuthScreen';
 
 // Convert JSON object to application format
@@ -630,13 +629,17 @@ function App() {
     setCurrentMode('welcome');
   };
 
+  const handleSignInSuccess = () => {
+    setCurrentMode('welcome');
+  };
+
   const renderCurrentMode = () => {
     switch (currentMode) {
       case 'auth':
         return (
           <AuthScreen 
             onSignUp={() => setCurrentMode('signup')}
-            onSignIn={() => setCurrentMode('welcome')}
+            onSignIn={() => setCurrentMode('signin')}
           />
         );
       case 'welcome':
@@ -735,6 +738,13 @@ function App() {
         return (
           <SignUpPage
             onSignUpSuccess={handleSignUpSuccess}
+            onBack={() => setCurrentMode('auth')}
+          />
+        );
+      case 'signin':
+        return (
+          <SignInPage
+            onSignInSuccess={handleSignInSuccess}
             onBack={() => setCurrentMode('auth')}
           />
         );
