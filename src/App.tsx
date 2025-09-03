@@ -16,6 +16,8 @@ import WordBuilder from './components/WordBuilder';
 import MiniGame from './components/MiniGame';
 import CountNumbers from './components/CountNumbers';
 import Celebration from './components/Celebration';
+import SignUpPage from './components/SignUpPage';
+import LandingPage from './components/LandingPage';
 
 // Convert JSON object to application format
 const allLetters = Object.entries(kannadaAudioMap).map(([english, data]) => ({
@@ -619,6 +621,14 @@ function App() {
     setCelebration(null);
   };
 
+  const handleSignUpSuccess = () => {
+    setCurrentMode('landing');
+  };
+
+  const handleGoHome = () => {
+    setCurrentMode('welcome');
+  };
+
   const renderCurrentMode = () => {
     switch (currentMode) {
       case 'welcome':
@@ -711,6 +721,19 @@ function App() {
           <CountNumbers
             numbers={kannadaNumbers}
             onComplete={handleCountComplete}
+          />
+        );
+      case 'signup':
+        return (
+          <SignUpPage
+            onSignUpSuccess={handleSignUpSuccess}
+            onBack={() => setCurrentMode('welcome')}
+          />
+        );
+      case 'landing':
+        return (
+          <LandingPage
+            onGoHome={handleGoHome}
           />
         );
       default:

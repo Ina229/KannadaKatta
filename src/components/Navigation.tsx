@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Gamepad2, Home } from 'lucide-react';
+import { BookOpen, Gamepad2, Home, UserPlus } from 'lucide-react';
 
 interface NavigationProps {
   currentMode: string;
@@ -11,17 +11,19 @@ export default function Navigation({ currentMode, onModeChange }: NavigationProp
     { id: 'welcome', label: 'Home', icon: Home, color: 'from-pink-500 to-rose-500' },
     { id: 'learning-category', label: 'Learning', icon: BookOpen, color: 'from-blue-500 to-indigo-500' },
     { id: 'games-category', label: 'Games', icon: Gamepad2, color: 'from-orange-500 to-red-500' },
+    { id: 'signup', label: 'Sign Up', icon: UserPlus, color: 'from-purple-500 to-indigo-500' },
   ];
 
   return (
     <nav className="fixed bottom-4 left-4 right-4 z-50">
       <div className="magical-card rounded-2xl shadow-2xl p-4 max-w-md mx-auto animate-glow">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-4 gap-3">
           {modes.map((mode) => {
             const IconComponent = mode.icon;
             const isActive = currentMode === mode.id || 
               (mode.id === 'learning-category' && ['learn', 'colors', 'greetings', 'count'].includes(currentMode)) ||
-              (mode.id === 'games-category' && ['practice', 'words', 'game'].includes(currentMode));
+              (mode.id === 'games-category' && ['practice', 'words', 'game'].includes(currentMode)) ||
+              (mode.id === 'signup' && ['signup', 'landing'].includes(currentMode));
             
             return (
               <button
@@ -33,8 +35,8 @@ export default function Navigation({ currentMode, onModeChange }: NavigationProp
                     : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 hover:from-gray-200 hover:to-gray-300 hover:scale-105'
                 }`}
               >
-                <IconComponent className={`h-8 w-8 mx-auto mb-2 ${isActive ? 'animate-sparkle' : ''}`} />
-                <div className="text-sm font-bold leading-tight">{mode.label}</div>
+                <IconComponent className={`h-6 w-6 mx-auto mb-1 ${isActive ? 'animate-sparkle' : ''}`} />
+                <div className="text-xs font-bold leading-tight">{mode.label}</div>
               </button>
             );
           })}
