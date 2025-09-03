@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global Styles */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -9,4 +10,136 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animated Background */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-bg {
+  /* background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe, #43e97b, #38f9d7, #ffecd2, #fcb69f, #a8edea, #fed6e3, #ff9a9e, #fecfef, #ffecd2, #fcb69f); */
+  background: #f0f2f5;
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+}
+
+/* Glass Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Enhanced Glass Effect */
+.glass-enhanced {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(25px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Rainbow Text */
+.rainbow-text {
+  background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rainbow 3s ease-in-out infinite alternate;
+}
+
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse Slow */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Wiggle Animation */
+@keyframes wiggle {
+  0%, 7%, 14%, 21% { transform: rotate(0deg); }
+  3.5% { transform: rotate(-12deg); }
+  10.5%, 17.5% { transform: rotate(12deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+/* Sparkle Animation */
+@keyframes sparkle {
+  0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1) rotate(180deg); opacity: 1; }
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Glow Effect */
+.glow {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Bounce Gentle */
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+/* Custom Shadows */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+/* Hover Effects */
+.hover-lift:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+/* Success and Error States */
+.success-glow {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+}
+
+.error-glow {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
 }
