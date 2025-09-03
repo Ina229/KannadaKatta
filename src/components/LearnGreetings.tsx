@@ -34,7 +34,8 @@ const LearnGreetings: React.FC<LearnGreetingsProps> = ({
           console.log('Greeting audio started playing successfully');
         })
         .catch(error => {
-          console.error('Error playing greeting audio:', error);
+          console.warn('Audio file not available:', currentGreeting.audio_file);
+          // Provide visual feedback even when audio is not available
         })
         .finally(() => {
           setTimeout(() => setIsPlaying(false), 1500);
