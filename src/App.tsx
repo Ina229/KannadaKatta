@@ -17,7 +17,6 @@ import MiniGame from './components/MiniGame';
 import LandingPage from './components/LandingPage';
 import AuthScreen from './components/AuthScreen';
 import SignInPage from './components/SignInPage';
-import AuthScreen from './components/AuthScreen';
 
 // Convert JSON object to application format
 const allLetters = Object.entries(kannadaAudioMap).map(([english, data]) => ({
