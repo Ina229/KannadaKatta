@@ -1,0 +1,77 @@
+[
+  {
+    "english": "Good Morning",
+    "kannada": "ಶುಭೋದಯ",
+    "audio_file": "good_morning.mp3"
+  },
+  {
+    "english": "Good Afternoon",
+    "kannada": "ಶುಭ ಮಧ್ಯಾಹ್ನ",
+    "audio_file": "good_afternoon.mp3"
+  },
+  {
+    "english": "Good Evening",
+    "kannada": "ಶುಭ ಸಂಜೆ",
+    "audio_file": "good_evening.mp3"
+  },
+  {
+    "english": "Good Night",
+    "kannada": "ಶುಭ ರಾತ್ರಿ",
+    "audio_file": "good_night.mp3"
+  },
+  {
+    "english": "Hello",
+    "kannada": "ನಮಸ್ಕಾರ",
+    "audio_file": "namaskara.mp3"
+  },
+  {
+    "english": "How are you?",
+    "kannada": "ಹೇಗಿದ್ದೀರಿ?",
+    "audio_file": "how_are_you.mp3"
+  },
+  {
+    "english": "I am fine",
+    "kannada": "ನಾನು ಚೆನ್ನಾಗಿದ್ದೇನೆ",
+    "audio_file": "i_am_fine.mp3"
+  },
+  {
+    "english": "Thank you",
+    "kannada": "ಧನ್ಯವಾದ",
+    "audio_file": "thank_you.mp3"
+  },
+  {
+    "english": "Please",
+    "kannada": "ದಯವಿಟ್ಟು",
+    "audio_file": "please.mp3"
+  },
+  {
+    "english": "Sorry",
+    "kannada": "ಕ್ಷಮಿಸಿ",
+    "audio_file": "sorry.mp3"
+  },
+  {
+    "english": "Excuse me",
+    "kannada": "ಕ್ಷಮಿಸಿ",
+    "audio_file": "excuse_me.mp3"
+  },
+  {
+    "english": "Yes",
+    "kannada": "ಹೌದು",
+    "audio_file": "yes.mp3"
+  },
+  {
+    "english": "No",
+    "kannada": "ಇಲ್ಲ",
+    "audio_file": "no.mp3"
+  },
+  {
+    "english": "Welcome",
+    "kannada": "ಸ್ವಾಗತ",
+    "audio_file": "welcome.mp3"
+  },
+  {
+    "english": "Goodbye",
+    "kannada": "ವಿದಾಯ",
+    "audio_file": "goodbye.mp3"
+  }
+]

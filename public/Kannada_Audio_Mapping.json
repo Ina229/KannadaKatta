@@ -1,0 +1,198 @@
+{
+  "a": {
+    "kannada": "ಅ",
+    "audioFile": "a.mp3"
+  },
+  "aa": {
+    "kannada": "ಆ",
+    "audioFile": "aa.mp3"
+  },
+  "i": {
+    "kannada": "ಇ",
+    "audioFile": "i.mp3"
+  },
+  "ii": {
+    "kannada": "ಈ",
+    "audioFile": "ii.mp3"
+  },
+  "u": {
+    "kannada": "ಉ",
+    "audioFile": "u.mp3"
+  },
+  "uu": {
+    "kannada": "ಊ",
+    "audioFile": "uu.mp3"
+  },
+  "ru": {
+    "kannada": "ಋ",
+    "audioFile": "ru.mp3"
+  },
+  "e": {
+    "kannada": "ಎ",
+    "audioFile": "e.mp3"
+  },
+  "ee": {
+    "kannada": "ಏ",
+    "audioFile": "ee.mp3"
+  },
+  "ai": {
+    "kannada": "ಐ",
+    "audioFile": "ai.mp3"
+  },
+  "o": {
+    "kannada": "ಒ",
+    "audioFile": "o.mp3"
+  },
+  "oo": {
+    "kannada": "ಓ",
+    "audioFile": "oo.mp3"
+  },
+  "au": {
+    "kannada": "ಔ",
+    "audioFile": "au.mp3"
+  },
+  "ka": {
+    "kannada": "ಕ",
+    "audioFile": "ka.mp3"
+  },
+  "kha": {
+    "kannada": "ಖ",
+    "audioFile": "kha.mp3"
+  },
+  "ga": {
+    "kannada": "ಗ",
+    "audioFile": "ga.mp3"
+  },
+  "gha": {
+    "kannada": "ಘ",
+    "audioFile": "gha.mp3"
+  },
+  "nga": {
+    "kannada": "ಙ",
+    "audioFile": "nga.mp3"
+  },
+  "cha": {
+    "kannada": "ಚ",
+    "audioFile": "cha.mp3"
+  },
+  "chha": {
+    "kannada": "ಛ",
+    "audioFile": "chha.mp3"
+  },
+  "ja": {
+    "kannada": "ಜ",
+    "audioFile": "ja.mp3"
+  },
+  "jha": {
+    "kannada": "ಝ",
+    "audioFile": "jha.mp3"
+  },
+  "nya": {
+    "kannada": "ಞ",
+    "audioFile": "nya.mp3"
+  },
+  "tta": {
+    "kannada": "ಟ",
+    "audioFile": "tta.mp3"
+  },
+  "ttha": {
+    "kannada": "ಠ",
+    "audioFile": "ttha.mp3"
+  },
+  "dda": {
+    "kannada": "ಡ",
+    "audioFile": "dda.mp3"
+  },
+  "ddha": {
+    "kannada": "ಢ",
+    "audioFile": "ddha.mp3"
+  },
+  "nna": {
+    "kannada": "ಣ",
+    "audioFile": "nna.mp3"
+  },
+  "ta": {
+    "kannada": "ತ",
+    "audioFile": "ta.mp3"
+  },
+  "tha": {
+    "kannada": "ಥ",
+    "audioFile": "tha.mp3"
+  },
+  "da": {
+    "kannada": "ದ",
+    "audioFile": "da.mp3"
+  },
+  "dha": {
+    "kannada": "ಧ",
+    "audioFile": "dha.mp3"
+  },
+  "na": {
+    "kannada": "ನ",
+    "audioFile": "na.mp3"
+  },
+  "pa": {
+    "kannada": "ಪ",
+    "audioFile": "pa.mp3"
+  },
+  "pha": {
+    "kannada": "ಫ",
+    "audioFile": "pha.mp3"
+  },
+  "ba": {
+    "kannada": "ಬ",
+    "audioFile": "ba.mp3"
+  },
+  "bha": {
+    "kannada": "ಭ",
+    "audioFile": "bha.mp3"
+  },
+  "ma": {
+    "kannada": "ಮ",
+    "audioFile": "ma.mp3"
+  },
+  "ya": {
+    "kannada": "ಯ",
+    "audioFile": "ya.mp3"
+  },
+  "ra": {
+    "kannada": "ರ",
+    "audioFile": "ra.mp3"
+  },
+  "la": {
+    "kannada": "ಲ",
+    "audioFile": "la.mp3"
+  },
+  "va": {
+    "kannada": "ವ",
+    "audioFile": "va.mp3"
+  },
+  "sha": {
+    "kannada": "ಶ",
+    "audioFile": "sha.mp3"
+  },
+  "ssa": {
+    "kannada": "ಷ",
+    "audioFile": "ssa.mp3"
+  },
+  "sa": {
+    "kannada": "ಸ",
+    "audioFile": "sa.mp3"
+  },
+  "ha": {
+    "kannada": "ಹ",
+    "audioFile": "ha.mp3"
+  },
+  "laa": {
+    "kannada": "ಳ",
+    "audioFile": "laa.mp3"
+  },
+  "ksha": {
+    "kannada": "ಕ್ಷ",
+    "audioFile": "ksha.mp3"
+  },
+  "jna": {
+    "kannada": "ಜ್ಞ",
+    "audioFile": "jna.mp3"
+  }
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "english": "red",
+    "kannada": "ಕೆಂಪು",
+    "audio_file": "red.mp3"
+  },
+  {
+    "english": "blue",
+    "kannada": "ನೀಲಿ",
+    "audio_file": "blue.mp3"
+  },
+  {
+    "english": "green",
+    "kannada": "ಹಸಿರು",
+    "audio_file": "green.mp3"
+  },
+  {
+    "english": "yellow",
+    "kannada": "ಹಳದಿ",
+    "audio_file": "yellow.mp3"
+  },
+  {
+    "english": "orange",
+    "kannada": "ಕಿತ್ತಳೆ",
+    "audio_file": "orange.mp3"
+  },
+  {
+    "english": "purple",
+    "kannada": "ನೇರಳೆ",
+    "audio_file": "purple.mp3"
+  },
+  {
+    "english": "pink",
+    "kannada": "ಗುಲಾಬಿ",
+    "audio_file": "pink.mp3"
+  },
+  {
+    "english": "black",
+    "kannada": "ಕಪ್ಪು",
+    "audio_file": "black.mp3"
+  },
+  {
+    "english": "white",
+    "kannada": "ಬಿಳಿ",
+    "audio_file": "white.mp3"
+  },
+  {
+    "english": "brown",
+    "kannada": "ಕಂದು",
+    "audio_file": "brown.mp3"
+  }
+]
