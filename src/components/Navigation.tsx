@@ -16,7 +16,6 @@ export default function Navigation({ currentMode, onModeChange }: NavigationProp
   return (
     <nav className="fixed bottom-4 left-4 right-4 z-50">
       <div className="magical-card rounded-2xl shadow-2xl p-4 max-w-md mx-auto animate-glow">
-        <div className="grid grid-cols-4 gap-3">
         <div className="grid grid-cols-3 gap-4">
           {modes.map((mode) => {
             const IconComponent = mode.icon;
@@ -40,7 +39,6 @@ export default function Navigation({ currentMode, onModeChange }: NavigationProp
               </button>
             );
           })}
-        </div>
         </div>
       </div>
     </nav>
