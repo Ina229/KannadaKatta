@@ -22,7 +22,8 @@ export default function Navigation({ currentMode, onModeChange }: NavigationProp
             const IconComponent = mode.icon;
             const isActive = currentMode === mode.id || 
               (mode.id === 'learning-category' && ['learn', 'colors', 'greetings', 'count'].includes(currentMode)) ||
-              (mode.id === 'games-category' && ['practice', 'words', 'game'].includes(currentMode));
+              (mode.id === 'games-category' && ['practice', 'words', 'game'].includes(currentMode)) ||
+              (mode.id === 'signup' && ['signup', 'landing'].includes(currentMode));
             
             return (
               <button
