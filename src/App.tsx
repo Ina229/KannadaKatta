@@ -19,8 +19,6 @@ import Celebration from './components/Celebration';
 import SignUpPage from './components/SignUpPage';
 import LandingPage from './components/LandingPage';
 import AuthScreen from './components/AuthScreen';
-import SignUpPage from './components/SignUpPage';
-import LandingPage from './components/LandingPage';
 
 // Convert JSON object to application format
 const allLetters = Object.entries(kannadaAudioMap).map(([english, data]) => ({
