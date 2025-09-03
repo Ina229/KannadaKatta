@@ -40,6 +40,7 @@ export default function Navigation({ currentMode, onModeChange }: NavigationProp
             );
           })}
         </div>
+        </div>
       </div>
     </nav>
   );
