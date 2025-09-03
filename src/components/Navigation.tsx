@@ -11,19 +11,18 @@ export default function Navigation({ currentMode, onModeChange }: NavigationProp
     { id: 'welcome', label: 'Home', icon: Home, color: 'from-pink-500 to-rose-500' },
     { id: 'learning-category', label: 'Learning', icon: BookOpen, color: 'from-blue-500 to-indigo-500' },
     { id: 'games-category', label: 'Games', icon: Gamepad2, color: 'from-orange-500 to-red-500' },
-    { id: 'signup', label: 'Sign Up', icon: UserPlus, color: 'from-purple-500 to-indigo-500' },
   ];
 
   return (
     <nav className="fixed bottom-4 left-4 right-4 z-50">
       <div className="magical-card rounded-2xl shadow-2xl p-4 max-w-md mx-auto animate-glow">
         <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-3 gap-4">
           {modes.map((mode) => {
             const IconComponent = mode.icon;
             const isActive = currentMode === mode.id || 
               (mode.id === 'learning-category' && ['learn', 'colors', 'greetings', 'count'].includes(currentMode)) ||
-              (mode.id === 'games-category' && ['practice', 'words', 'game'].includes(currentMode)) ||
-              (mode.id === 'signup' && ['signup', 'landing'].includes(currentMode));
+              (mode.id === 'games-category' && ['practice', 'words', 'game'].includes(currentMode));
             
             return (
               <button

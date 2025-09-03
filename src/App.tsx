@@ -18,6 +18,9 @@ import CountNumbers from './components/CountNumbers';
 import Celebration from './components/Celebration';
 import SignUpPage from './components/SignUpPage';
 import LandingPage from './components/LandingPage';
+import AuthScreen from './components/AuthScreen';
+import SignUpPage from './components/SignUpPage';
+import LandingPage from './components/LandingPage';
 
 // Convert JSON object to application format
 const allLetters = Object.entries(kannadaAudioMap).map(([english, data]) => ({
@@ -423,7 +426,7 @@ const miniGameQuestions = [
 ];
 
 function App() {
-  const [currentMode, setCurrentMode] = useState('welcome');
+  const [currentMode, setCurrentMode] = useState('auth');
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const [currentGreetingIndex, setCurrentGreetingIndex] = useState(0);
@@ -631,6 +634,13 @@ function App() {
 
   const renderCurrentMode = () => {
     switch (currentMode) {
+      case 'auth':
+        return (
+          <AuthScreen 
+            onSignUp={() => setCurrentMode('signup')}
+            onSignIn={() => setCurrentMode('welcome')}
+          />
+        );
       case 'welcome':
         return (
           <WelcomeScreen onModeSelect={setCurrentMode} />
@@ -727,7 +737,7 @@ function App() {
         return (
           <SignUpPage
             onSignUpSuccess={handleSignUpSuccess}
-            onBack={() => setCurrentMode('welcome')}
+            onBack={() => setCurrentMode('auth')}
           />
         );
       case 'landing':
