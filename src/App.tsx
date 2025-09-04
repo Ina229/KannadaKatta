@@ -425,7 +425,7 @@ const miniGameQuestions = [
 ];
 
 function App() {
-  const [currentMode, setCurrentMode] = useState('welcome');
+  const [currentMode, setCurrentMode] = useState('auth');
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const [currentGreetingIndex, setCurrentGreetingIndex] = useState(0);
