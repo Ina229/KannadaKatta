@@ -3,6 +3,7 @@ import kannadaAudioMap from '../public/Kannada_Audio_Mapping.json';
 import kannadaNumbers from '../public/Kannada_Numbers_Audio.json';
 import kannadaColors from '../public/Kannada_Colors_Audio.json';
 import kannadaGreetings from '../public/Kannada_Greetings_Audio.json';
+import kannadaAnimals from '../public/Kannada_Animals_Audio.json';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import WelcomeScreen from './components/WelcomeScreen';
@@ -11,6 +12,7 @@ import GamesCategoryScreen from './components/GamesCategoryScreen';
 import LearnLetter from './components/LearnLetter';
 import LearnColor from './components/LearnColor';
 import LearnGreetings from './components/LearnGreetings';
+import LearnAnimal from './components/LearnAnimal';
 import PracticeMatch from './components/PracticeMatch';
 import WordBuilder from './components/WordBuilder';
 import MiniGame from './components/MiniGame';
@@ -33,6 +35,13 @@ const allColors = kannadaColors.map((colorData) => ({
   color: colorData.kannada,
   englishTranslation: colorData.english,
   audio: colorData.audio_file,
+}));
+
+// Convert animals JSON to application format
+const allAnimals = kannadaAnimals.map((animalData) => ({
+  animal: animalData.kannada,
+  englishTranslation: animalData.english,
+  audio: animalData.audio_file,
 }));
 
 const practiceQuestions = [
@@ -429,6 +438,7 @@ function App() {
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const [currentGreetingIndex, setCurrentGreetingIndex] = useState(0);
+  const [currentAnimalIndex, setCurrentAnimalIndex] = useState(0);
   const [currentPracticeQuestionIndex, setCurrentPracticeQuestionIndex] = useState(0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentMiniGameQuestionIndex, setCurrentMiniGameQuestionIndex] = useState(0);
@@ -544,6 +554,26 @@ function App() {
       const prevIndex = currentColorIndex - 1;
       if (prevIndex >= 0) {
         setCurrentColorIndex(prevIndex);
+      }
+    }
+  };
+
+  const handleLearnAnimalNavigation = (direction: 'next' | 'previous') => {
+    if (direction === 'next') {
+      const nextIndex = currentAnimalIndex + 1;
+      if (nextIndex >= allAnimals.length) {
+        // All animals completed, go back to learning category
+        setCurrentAnimalIndex(0);
+        setCurrentMode('learning-category');
+        handleSuccess('learn');
+      } else {
+        // Move to next animal
+        setCurrentAnimalIndex(nextIndex);
+      }
+    } else if (direction === 'previous') {
+      const prevIndex = currentAnimalIndex - 1;
+      if (prevIndex >= 0) {
+        setCurrentAnimalIndex(prevIndex);
       }
     }
   };
@@ -711,6 +741,18 @@ function App() {
             currentIndex={currentGreetingIndex}
             totalGreetings={kannadaGreetings.length}
             onNavigate={handleLearnGreetingsNavigation}
+          />
+        );
+      case 'animals':
+        const currentAnimal = allAnimals[currentAnimalIndex];
+        return (
+          <LearnAnimal
+            animal={currentAnimal.animal}
+            englishTranslation={currentAnimal.englishTranslation}
+            audioFile={currentAnimal.audio}
+            currentIndex={currentAnimalIndex}
+            totalAnimals={allAnimals.length}
+            onNavigate={handleLearnAnimalNavigation}
           />
         );
       case 'words':

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Palette, MessageCircle, Hash, ArrowLeft, Sparkles } from 'lucide-react';
+import { BookOpen, Palette, MessageCircle, Hash, Heart, ArrowLeft, Sparkles } from 'lucide-react';
 
 interface LearningCategoryScreenProps {
   onModeSelect: (mode: string) => void;
@@ -34,6 +34,15 @@ export default function LearningCategoryScreen({ onModeSelect, onBack }: Learnin
       color: 'from-green-500 to-emerald-600',
       hoverColor: 'hover:from-green-600 hover:to-emerald-700',
       emoji: '👋'
+    },
+    {
+      id: 'animals',
+      title: 'Learn Animals',
+      description: 'Discover animal names and their sounds in Kannada',
+      icon: Heart,
+      color: 'from-orange-500 to-red-600',
+      hoverColor: 'hover:from-orange-600 hover:to-red-700',
+      emoji: '🐾'
     },
     {
       id: 'count',
