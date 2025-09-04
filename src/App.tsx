@@ -698,7 +698,7 @@ function App() {
       if (nextIndex >= allWordData.length) {
         // All words completed, go back to welcome
         setCurrentWordIndex(0);
-        setCurrentMode('games-category');
+        setCurrentMode('learning-category');
       } else {
         // Move to next word
         setCurrentWordIndex(nextIndex);
