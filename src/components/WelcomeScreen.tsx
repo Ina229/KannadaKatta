@@ -37,16 +37,6 @@ export default function WelcomeScreen({ onModeSelect }: WelcomeScreenProps) {
       color: 'from-orange-500 to-red-600',
       hoverColor: 'hover:from-orange-600 hover:to-red-700'
     },
-    {
-      id: 'explore',
-      title: 'Explore',
-      subtitle: 'Discovery Mode',
-      description: 'Discover new topics and interests',
-      emoji: '🔍',
-      icon: Heart,
-      color: 'from-pink-500 to-rose-600',
-      hoverColor: 'hover:from-pink-600 hover:to-rose-700'
-    }
   ];
 
   return (
