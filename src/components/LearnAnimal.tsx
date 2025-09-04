@@ -117,6 +117,8 @@ const LearnAnimal: React.FC<LearnAnimalProps> = ({
             {animal}
           </button>
           
+          <br />
+          
           {/* Play Sound Button */}
           <button
             onClick={handleAnimalClick}
