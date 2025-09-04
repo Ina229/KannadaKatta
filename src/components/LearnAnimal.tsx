@@ -24,7 +24,7 @@ const LearnAnimal: React.FC<LearnAnimalProps> = ({
     setIsPlaying(true);
     
     if (audioFile) {
-      const audio = new Audio(`/${audioFile}`);
+      const audio = new Audio(audioFile);
       audio.play()
         .then(() => {
           console.log('Animal audio started playing successfully');
