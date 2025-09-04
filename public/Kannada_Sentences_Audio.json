@@ -1,0 +1,77 @@
+[
+  {
+    "english": "What is your name?",
+    "kannada": "ನಿಮ್ಮ ಹೆಸರೇನು?",
+    "audio_file": "what_is_your_name.mp3"
+  },
+  {
+    "english": "My name is...",
+    "kannada": "ನನ್ನ ಹೆಸರು...",
+    "audio_file": "my_name_is.mp3"
+  },
+  {
+    "english": "Where are you going?",
+    "kannada": "ನೀವು ಎಲ್ಲಿಗೆ ಹೋಗುತ್ತಿದ್ದೀರಿ?",
+    "audio_file": "where_are_you_going.mp3"
+  },
+  {
+    "english": "I am going to school",
+    "kannada": "ನಾನು ಶಾಲೆಗೆ ಹೋಗುತ್ತಿದ್ದೇನೆ",
+    "audio_file": "going_to_school.mp3"
+  },
+  {
+    "english": "What time is it?",
+    "kannada": "ಎಷ್ಟು ಗಂಟೆ ಆಯಿತು?",
+    "audio_file": "what_time_is_it.mp3"
+  },
+  {
+    "english": "I am hungry",
+    "kannada": "ನನಗೆ ಹಸಿವಾಗಿದೆ",
+    "audio_file": "i_am_hungry.mp3"
+  },
+  {
+    "english": "I am thirsty",
+    "kannada": "ನನಗೆ ಬಾಯಾರಿಕೆಯಾಗಿದೆ",
+    "audio_file": "i_am_thirsty.mp3"
+  },
+  {
+    "english": "Where is the bathroom?",
+    "kannada": "ಸ್ನಾನಗೃಹ ಎಲ್ಲಿದೆ?",
+    "audio_file": "where_is_bathroom.mp3"
+  },
+  {
+    "english": "How much does this cost?",
+    "kannada": "ಇದರ ಬೆಲೆ ಎಷ್ಟು?",
+    "audio_file": "how_much_cost.mp3"
+  },
+  {
+    "english": "I don't understand",
+    "kannada": "ನನಗೆ ಅರ್ಥವಾಗುತ್ತಿಲ್ಲ",
+    "audio_file": "i_dont_understand.mp3"
+  },
+  {
+    "english": "Can you help me?",
+    "kannada": "ನೀವು ನನಗೆ ಸಹಾಯ ಮಾಡಬಹುದೇ?",
+    "audio_file": "can_you_help_me.mp3"
+  },
+  {
+    "english": "I need help",
+    "kannada": "ನನಗೆ ಸಹಾಯ ಬೇಕು",
+    "audio_file": "i_need_help.mp3"
+  },
+  {
+    "english": "Where do you live?",
+    "kannada": "ನೀವು ಎಲ್ಲಿ ವಾಸಿಸುತ್ತೀರಿ?",
+    "audio_file": "where_do_you_live.mp3"
+  },
+  {
+    "english": "I live in Bangalore",
+    "kannada": "ನಾನು ಬೆಂಗಳೂರಿನಲ್ಲಿ ವಾಸಿಸುತ್ತೇನೆ",
+    "audio_file": "i_live_in_bangalore.mp3"
+  },
+  {
+    "english": "See you later",
+    "kannada": "ನಂತರ ಭೇಟಿಯಾಗೋಣ",
+    "audio_file": "see_you_later.mp3"
+  }
+]

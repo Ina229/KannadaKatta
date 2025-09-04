@@ -4,6 +4,7 @@ import kannadaNumbers from '../public/Kannada_Numbers_Audio.json';
 import kannadaColors from '../public/Kannada_Colors_Audio.json';
 import kannadaGreetings from '../public/Kannada_Greetings_Audio.json';
 import kannadaAnimals from '../public/Kannada_Animals_Audio.json';
+import kannadaSentences from '../public/Kannada_Sentences_Audio.json';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import WelcomeScreen from './components/WelcomeScreen';
@@ -22,6 +23,7 @@ import SignInPage from './components/SignInPage';
 import CountNumbers from './components/CountNumbers';
 import SignUpPage from './components/SignUpPage';
 import Celebration from './components/Celebration';
+import LearnSentences from './components/LearnSentences';
 
 // Convert JSON object to application format
 const allLetters = Object.entries(kannadaAudioMap).map(([english, data]) => ({
@@ -670,6 +672,26 @@ function App() {
       const prevIndex = currentGreetingIndex - 1;
       if (prevIndex >= 0) {
         setCurrentGreetingIndex(prevIndex);
+      }
+    }
+  };
+
+  const handleLearnSentencesNavigation = (direction: 'next' | 'previous') => {
+    if (direction === 'next') {
+      const nextIndex = currentSentenceIndex + 1;
+      if (nextIndex >= kannadaSentences.length) {
+        // All sentences completed, go back to learning category
+        setCurrentSentenceIndex(0);
+        setCurrentMode('learning-category');
+        handleSuccess('learn');
+      } else {
+        // Move to next sentence
+        setCurrentSentenceIndex(nextIndex);
+      }
+    } else if (direction === 'previous') {
+      const prevIndex = currentSentenceIndex - 1;
+      if (prevIndex >= 0) {
+        setCurrentSentenceIndex(prevIndex);
       }
     }
   };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Palette, MessageCircle, Hash, Heart, ArrowLeft, Sparkles, Building2 } from 'lucide-react';
+import { BookOpen, Palette, MessageCircle, Hash, Heart, ArrowLeft, Sparkles, Building2, MessageSquare } from 'lucide-react';
 
 interface LearningCategoryScreenProps {
   onModeSelect: (mode: string) => void;
@@ -61,6 +61,15 @@ export default function LearningCategoryScreen({ onModeSelect, onBack }: Learnin
       color: 'from-teal-500 to-cyan-600',
       hoverColor: 'hover:from-teal-600 hover:to-cyan-700',
       emoji: '🔢'
+    },
+    {
+      id: 'sentences',
+      title: 'Learn Sentences',
+      description: 'Master useful daily conversations and phrases',
+      icon: MessageSquare,
+      color: 'from-violet-500 to-purple-600',
+      hoverColor: 'hover:from-violet-600 hover:to-purple-700',
+      emoji: '💬'
     }
   ];
 
