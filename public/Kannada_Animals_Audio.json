@@ -1,0 +1,77 @@
+[
+  {
+    "english": "dog",
+    "kannada": "ನಾಯಿ",
+    "audio_file": "nayi.mp3"
+  },
+  {
+    "english": "cat",
+    "kannada": "ಬೆಕ್ಕು",
+    "audio_file": "bekku.mp3"
+  },
+  {
+    "english": "cow",
+    "kannada": "ಹಸು",
+    "audio_file": "hasu.mp3"
+  },
+  {
+    "english": "tiger",
+    "kannada": "ಹುಲಿ",
+    "audio_file": "huli.mp3"
+  },
+  {
+    "english": "elephant",
+    "kannada": "ಆನೆ",
+    "audio_file": "aane.mp3"
+  },
+  {
+    "english": "horse",
+    "kannada": "ಕುದುರೆ",
+    "audio_file": "kudure.mp3"
+  },
+  {
+    "english": "bird",
+    "kannada": "ಹಕ್ಕಿ",
+    "audio_file": "hakki.mp3"
+  },
+  {
+    "english": "fish",
+    "kannada": "ಮೀನು",
+    "audio_file": "meenu.mp3"
+  },
+  {
+    "english": "monkey",
+    "kannada": "ಕೋತಿ",
+    "audio_file": "koti.mp3"
+  },
+  {
+    "english": "rabbit",
+    "kannada": "ಮೊಲ",
+    "audio_file": "mola.mp3"
+  },
+  {
+    "english": "goat",
+    "kannada": "ಮೇಕೆ",
+    "audio_file": "meke.mp3"
+  },
+  {
+    "english": "buffalo",
+    "kannada": "ಎಮ್ಮೆ",
+    "audio_file": "emme.mp3"
+  },
+  {
+    "english": "lion",
+    "kannada": "ಸಿಂಹ",
+    "audio_file": "simha.mp3"
+  },
+  {
+    "english": "bear",
+    "kannada": "ಕರಡಿ",
+    "audio_file": "karadi.mp3"
+  },
+  {
+    "english": "deer",
+    "kannada": "ಜಿಂಕೆ",
+    "audio_file": "jinke.mp3"
+  }
+]
