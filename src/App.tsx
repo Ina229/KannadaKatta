@@ -521,6 +521,7 @@ function App() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentMiniGameQuestionIndex, setCurrentMiniGameQuestionIndex] = useState(0);
   const [currentNumberIndex, setCurrentNumberIndex] = useState(0);
+  const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
   const [stars, setStars] = useState(0);
   const [badges, setBadges] = useState<string[]>([]);
   const [celebration, setCelebration] = useState<{
@@ -672,26 +673,6 @@ function App() {
       const prevIndex = currentGreetingIndex - 1;
       if (prevIndex >= 0) {
         setCurrentGreetingIndex(prevIndex);
-      }
-    }
-  };
-
-  const handleLearnSentencesNavigation = (direction: 'next' | 'previous') => {
-    if (direction === 'next') {
-      const nextIndex = currentSentenceIndex + 1;
-      if (nextIndex >= kannadaSentences.length) {
-        // All sentences completed, go back to learning category
-        setCurrentSentenceIndex(0);
-        setCurrentMode('learning-category');
-        handleSuccess('learn');
-      } else {
-        // Move to next sentence
-        setCurrentSentenceIndex(nextIndex);
-      }
-    } else if (direction === 'previous') {
-      const prevIndex = currentSentenceIndex - 1;
-      if (prevIndex >= 0) {
-        setCurrentSentenceIndex(prevIndex);
       }
     }
   };
@@ -881,6 +862,15 @@ function App() {
           <CountNumbers
             numbers={kannadaNumbers}
             onComplete={handleCountComplete}
+          />
+        );
+      case 'sentences':
+        return (
+          <LearnSentences
+            sentences={kannadaSentences}
+            currentIndex={currentSentenceIndex}
+            totalSentences={kannadaSentences.length}
+            onNavigate={handleLearnSentencesNavigation}
           />
         );
       case 'signup':
