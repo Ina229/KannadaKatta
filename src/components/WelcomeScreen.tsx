@@ -22,40 +22,6 @@ export default function WelcomeScreen({ onModeSelect }: WelcomeScreenProps) {
       title: 'Games',
       description: 'Practice through fun interactive games and challenges',
       icon: Gamepad2,
-      color: 'from-orange-500 to-red-600',
-      hoverColor: 'hover:from-orange-600 hover:to-red-700',
-      emoji: '🎮',
-      subtitle: 'Practice & Play'
-    }
-  ];
-
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 relative">
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-20 text-6xl animate-float opacity-30">📚</div>
-      <div className="absolute top-32 right-24 text-5xl animate-bounce-gentle opacity-40" style={{animationDelay: '1s'}}>🎮</div>
-      <div className="absolute bottom-32 left-16 text-7xl animate-float opacity-25" style={{animationDelay: '2s'}}>🌟</div>
-      <div className="absolute bottom-20 right-20 text-6xl animate-bounce-gentle opacity-35" style={{animationDelay: '3s'}}>✨</div>
-      
-      {/* Main Content */}
-      <div className="text-center mb-12 max-w-4xl">
-        {/* Welcome Message */}
-        <div className="mb-8">
-          <h1 className="text-6xl md:text-7xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent animate-pulse-slow">
-              ಕನ್ನಡ ಕಟ್ಟ
-            </span>
-          </h1>
-          <div className="flex items-center justify-center mb-6">
-            <Heart className="h-8 w-8 text-red-500 mr-3 animate-sparkle" fill="currentColor" />
-            <p className="text-2xl md:text-3xl font-semibold text-gray-800">
-              Welcome to your Kannada learning journey!
-            </p>
-            <Heart className="h-8 w-8 text-red-500 ml-3 animate-sparkle" fill="currentColor" />
-          </div>
-        </div>
-
-        {/* Main Categories Description */}
         <div className="mb-12">
           <div className="flex items-center justify-center mb-6">
             <GraduationCap className="h-12 w-12 text-purple-600 mr-4 animate-sparkle" />
