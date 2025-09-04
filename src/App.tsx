@@ -623,6 +623,13 @@ function App() {
     setCelebration(null);
   };
 
+  const handleSignOut = () => {
+    setCurrentMode('auth');
+    // Reset user progress if desired
+    // setStars(0);
+    // setBadges([]);
+  };
+
   const handleSignUpSuccess = () => {
     setCurrentMode('landing');
   };
@@ -775,7 +782,12 @@ function App() {
         <div className="absolute bottom-40 right-1/4 w-22 h-22 floating-orb rounded-full animate-float animate-sparkle" style={{animationDelay: '7s'}}></div>
       </div>
       
-      <Header stars={stars} badges={badges} />
+      <Header 
+        stars={stars} 
+        badges={badges} 
+        onSignOut={handleSignOut}
+        isAuthenticated={!['auth', 'signup', 'signin', 'landing'].includes(currentMode)}
+      />
       
       <main className="pb-32">
         {renderCurrentMode()}

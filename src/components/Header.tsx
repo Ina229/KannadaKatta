@@ -1,12 +1,14 @@
 import React from 'react';
-import { Star, Award } from 'lucide-react';
+import { Star, Award, LogOut } from 'lucide-react';
 
 interface HeaderProps {
   stars: number;
   badges: string[];
+  onSignOut?: () => void;
+  isAuthenticated?: boolean;
 }
 
-export default function Header({ stars, badges }: HeaderProps) {
+export default function Header({ stars, badges, onSignOut, isAuthenticated }: HeaderProps) {
   return (
     <header className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 text-white p-6 rounded-b-3xl shadow-2xl border-b-4 border-yellow-300 animate-glow">
       <div className="flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-4">
@@ -35,6 +37,16 @@ export default function Header({ stars, badges }: HeaderProps) {
               </div>
             ))}
           </div>
+          
+          {isAuthenticated && onSignOut && (
+            <button
+              onClick={onSignOut}
+              className="bg-white/30 px-3 sm:px-4 py-2 sm:py-3 rounded-full shadow-xl backdrop-blur-sm border-2 border-white/30 hover:bg-white/40 transition-all duration-300 hover:scale-105 animate-glow flex items-center"
+            >
+              <LogOut className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+              <span className="ml-1 sm:ml-2 font-bold text-sm sm:text-base hidden sm:inline">Sign Out</span>
+            </button>
+          )}
         </div>
       </div>
     </header>
