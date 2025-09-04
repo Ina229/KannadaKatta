@@ -45,39 +45,6 @@ export default function AuthScreen({ onSignUp, onSignIn }: AuthScreenProps) {
           </p>
         </div>
 
-        {/* Features Preview */}
-        <div className="mb-12">
-          <div className="flex items-center justify-center mb-6">
-            <GraduationCap className="h-12 w-12 text-purple-600 mr-4 animate-sparkle" />
-            <p className="text-2xl font-bold text-gray-800">
-              What you'll learn
-            </p>
-            <GraduationCap className="h-12 w-12 text-purple-600 ml-4 animate-sparkle" />
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div className="magical-card p-6 rounded-2xl shadow-xl animate-glow">
-              <div className="text-4xl mb-3">📝</div>
-              <div className="font-bold text-gray-800">Letters</div>
-              <div className="text-sm text-gray-600">Kannada script</div>
-            </div>
-            <div className="magical-card p-6 rounded-2xl shadow-xl animate-glow">
-              <div className="text-4xl mb-3">🎨</div>
-              <div className="font-bold text-gray-800">Colors</div>
-              <div className="text-sm text-gray-600">Visual learning</div>
-            </div>
-            <div className="magical-card p-6 rounded-2xl shadow-xl animate-glow">
-              <div className="text-4xl mb-3">👋</div>
-              <div className="font-bold text-gray-800">Greetings</div>
-              <div className="text-sm text-gray-600">Daily phrases</div>
-            </div>
-            <div className="magical-card p-6 rounded-2xl shadow-xl animate-glow">
-              <div className="text-4xl mb-3">🎮</div>
-              <div className="font-bold text-gray-800">Games</div>
-              <div className="text-sm text-gray-600">Fun practice</div>
-            </div>
-          </div>
-        </div>
 
         {/* Authentication Options */}
         <div className="magical-card rounded-3xl shadow-2xl p-8 max-w-md mx-auto animate-glow">
