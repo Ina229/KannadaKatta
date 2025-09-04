@@ -122,6 +122,8 @@ const LearnGreetings: React.FC<LearnGreetingsProps> = ({
             {currentGreeting.kannada}
           </button>
           
+          <br />
+          
           {/* Play Sound Button */}
           <button
             onClick={handleGreetingClick}
