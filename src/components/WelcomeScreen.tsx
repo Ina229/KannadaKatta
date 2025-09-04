@@ -22,6 +22,16 @@ export default function WelcomeScreen({ onModeSelect }: WelcomeScreenProps) {
       title: 'Games',
       description: 'Practice through fun interactive games and challenges',
       icon: Gamepad2,
+      color: 'from-green-500 to-emerald-600',
+      hoverColor: 'hover:from-green-600 hover:to-emerald-700',
+      emoji: '🎮',
+      subtitle: 'Play and Learn'
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-yellow-100 flex items-center justify-center p-8">
+      <div className="w-full max-w-6xl">
         <div className="mb-12">
           <div className="flex items-center justify-center mb-6">
             <GraduationCap className="h-12 w-12 text-purple-600 mr-4 animate-sparkle" />
