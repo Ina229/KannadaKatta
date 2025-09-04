@@ -8,7 +8,7 @@ interface WelcomeScreenProps {
 export default function WelcomeScreen({ onModeSelect }: WelcomeScreenProps) {
   const mainOptions = [
     {
-      id: 'learn',
+      id: 'learning-category',
       title: 'Learn',
       subtitle: 'Educational Mode',
       description: 'Master new concepts with guided lessons',
