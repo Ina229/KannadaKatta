@@ -115,18 +115,6 @@ export default function AuthScreen({ onSignUp, onSignIn }: AuthScreenProps) {
               </div>
             </button>
 
-            {/* Guest Access */}
-            <div className="text-center mt-6">
-              <p className="text-gray-600 text-sm mb-3">
-                Want to try first?
-              </p>
-              <button
-                onClick={onSignIn}
-                className="text-purple-600 font-semibold hover:text-purple-800 transition-colors underline"
-              >
-                Continue as Guest
-              </button>
-            </div>
           </div>
         </div>
 
