@@ -18,15 +18,6 @@ export default function GamesCategoryScreen({ onModeSelect, onBack }: GamesCateg
       emoji: '🎯'
     },
     {
-      id: 'words',
-      title: 'Build Words',
-      description: 'Learn to construct meaningful words',
-      icon: Building2,
-      color: 'from-purple-500 to-violet-600',
-      hoverColor: 'hover:from-purple-600 hover:to-violet-700',
-      emoji: '🏗️'
-    },
-    {
       id: 'game',
       title: 'Fun Games',
       description: 'Play interactive word, color & number matching games',
