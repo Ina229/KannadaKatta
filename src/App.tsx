@@ -793,10 +793,12 @@ function App() {
         {renderCurrentMode()}
       </main>
       
-      <Navigation 
-        currentMode={currentMode} 
-        onModeChange={setCurrentMode} 
-      />
+      {!['auth', 'signup', 'signin', 'landing'].includes(currentMode) && (
+        <Navigation 
+          currentMode={currentMode} 
+          onModeChange={setCurrentMode} 
+        />
+      )}
       
       {celebration && (
         <Celebration
