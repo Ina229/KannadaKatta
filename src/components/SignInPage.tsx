@@ -189,14 +189,6 @@ export default function SignInPage({ onSignInSuccess, onBack }: SignInPageProps)
               Don't have an account? Sign up here
             </button>
           </div>
-          <div>
-            <button
-              onClick={onSignInSuccess}
-              className="text-gray-600 font-medium hover:text-gray-800 transition-colors underline"
-            >
-              Continue as Guest
-            </button>
-          </div>
         </div>
 
         {/* Motivational Message */}
