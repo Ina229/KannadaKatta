@@ -7,40 +7,6 @@ interface WelcomeScreenProps {
 
 export default function WelcomeScreen({ onModeSelect }: WelcomeScreenProps) {
   const mainOptions = [
-    {
-      id: 'learning-category',
-      title: 'Learning',
-      description: 'Learn letters, colors, greetings, and numbers',
-      icon: BookOpen,
-      color: 'from-blue-500 to-indigo-600',
-      hoverColor: 'hover:from-blue-600 hover:to-indigo-700',
-      emoji: '📚',
-      subtitle: 'Master the Basics'
-    },
-    {
-      id: 'games-category',
-      title: 'Games',
-      description: 'Practice through fun interactive games and challenges',
-      icon: Gamepad2,
-      color: 'from-green-500 to-emerald-600',
-      hoverColor: 'hover:from-green-600 hover:to-emerald-700',
-      emoji: '🎮',
-      subtitle: 'Play and Learn'
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-yellow-100 flex items-center justify-center p-8">
-      <div className="w-full max-w-6xl">
-        <div className="mb-12">
-          <div className="flex items-center justify-center mb-6">
-            <GraduationCap className="h-12 w-12 text-purple-600 mr-4 animate-sparkle" />
-            <p className="text-2xl font-bold text-gray-800">
-              Choose your learning path
-            </p>
-            <GraduationCap className="h-12 w-12 text-purple-600 ml-4 animate-sparkle" />
-          </div>
-        </div>
 
         {/* Main Options Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
