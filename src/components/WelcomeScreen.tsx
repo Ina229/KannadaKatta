@@ -18,7 +18,7 @@ export default function WelcomeScreen({ onModeSelect }: WelcomeScreenProps) {
       hoverColor: 'hover:from-blue-600 hover:to-purple-700'
     },
     {
-      id: 'play',
+      id: 'games-category',
       title: 'Play',
       subtitle: 'Game Mode',
       description: 'Have fun while learning through games',
