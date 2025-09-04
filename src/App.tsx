@@ -677,6 +677,26 @@ function App() {
     }
   };
 
+  const handleLearnSentencesNavigation = (direction: 'next' | 'previous') => {
+    if (direction === 'next') {
+      const nextIndex = currentSentenceIndex + 1;
+      if (nextIndex >= kannadaSentences.length) {
+        // All sentences completed, go back to learning category
+        setCurrentSentenceIndex(0);
+        setCurrentMode('learning-category');
+        handleSuccess('learn');
+      } else {
+        // Move to next sentence
+        setCurrentSentenceIndex(nextIndex);
+      }
+    } else if (direction === 'previous') {
+      const prevIndex = currentSentenceIndex - 1;
+      if (prevIndex >= 0) {
+        setCurrentSentenceIndex(prevIndex);
+      }
+    }
+  };
+
   const handlePracticeMatchComplete = () => {
     handleSuccess('practice');
     
