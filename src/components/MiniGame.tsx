@@ -196,6 +196,15 @@ export default function MiniGame({ question, onSuccess }: MiniGameProps) {
                 </div>
               )}
               
+              {/* Show animal emoji for animal options */}
+              {question.type === 'animal' && (
+                <div className="flex justify-center mb-2">
+                  <div className="text-4xl">
+                    {getAnimalEmoji(option.englishTranslation)}
+                  </div>
+                </div>
+              )}
+              
               {/* Kannada Word */}
               <div className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
                 {option.word}
