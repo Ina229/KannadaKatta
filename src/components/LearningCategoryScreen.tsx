@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Palette, MessageCircle, Hash, Heart, ArrowLeft, Sparkles, Building2, MessageSquare } from 'lucide-react';
+import { BookOpen, Palette, MessageCircle, Hash, Heart, ArrowLeft, Sparkles, Building2, MessageSquare, Hand } from 'lucide-react';
 
 interface LearningCategoryScreenProps {
   onModeSelect: (mode: string) => void;
@@ -70,6 +70,15 @@ export default function LearningCategoryScreen({ onModeSelect, onBack }: Learnin
       color: 'from-violet-500 to-purple-600',
       hoverColor: 'hover:from-violet-600 hover:to-purple-700',
       emoji: '💬'
+    },
+    {
+      id: 'bodyparts',
+      title: 'Learn Body Parts',
+      description: 'Discover and pronounce body parts in Kannada',
+      icon: Hand,
+      color: 'from-cyan-500 to-blue-600',
+      hoverColor: 'hover:from-cyan-600 hover:to-blue-700',
+      emoji: '🖐️'
     }
   ];
 

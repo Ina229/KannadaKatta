@@ -1,0 +1,77 @@
+[
+  {
+    "english": "head",
+    "kannada": "ತಲೆ",
+    "audio_file": "head.mp3"
+  },
+  {
+    "english": "hand",
+    "kannada": "ಕೈ",
+    "audio_file": "hand.mp3"
+  },
+  {
+    "english": "eye",
+    "kannada": "ಕಣ್ಣು",
+    "audio_file": "eye.mp3"
+  },
+  {
+    "english": "nose",
+    "kannada": "ಮೂಗು",
+    "audio_file": "nose.mp3"
+  },
+  {
+    "english": "mouth",
+    "kannada": "ಬಾಯಿ",
+    "audio_file": "mouth.mp3"
+  },
+  {
+    "english": "ear",
+    "kannada": "ಕಿವಿ",
+    "audio_file": "ear.mp3"
+  },
+  {
+    "english": "foot",
+    "kannada": "ಕಾಲು",
+    "audio_file": "foot.mp3"
+  },
+  {
+    "english": "leg",
+    "kannada": "ಕಾಲು",
+    "audio_file": "leg.mp3"
+  },
+  {
+    "english": "arm",
+    "kannada": "ಬಾಹು",
+    "audio_file": "arm.mp3"
+  },
+  {
+    "english": "finger",
+    "kannada": "ಬೆರಳು",
+    "audio_file": "finger.mp3"
+  },
+  {
+    "english": "hair",
+    "kannada": "ಕೂದಲು",
+    "audio_file": "hair.mp3"
+  },
+  {
+    "english": "face",
+    "kannada": "ಮುಖ",
+    "audio_file": "face.mp3"
+  },
+  {
+    "english": "neck",
+    "kannada": "ಕುತ್ತಿಗೆ",
+    "audio_file": "neck.mp3"
+  },
+  {
+    "english": "shoulder",
+    "kannada": "ಭುಜ",
+    "audio_file": "shoulder.mp3"
+  },
+  {
+    "english": "back",
+    "kannada": "ಬೆನ್ನು",
+    "audio_file": "back.mp3"
+  }
+]

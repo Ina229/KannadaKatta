@@ -5,6 +5,7 @@ import kannadaColors from '../public/Kannada_Colors_Audio.json';
 import kannadaGreetings from '../public/Kannada_Greetings_Audio.json';
 import kannadaAnimals from '../public/Kannada_Animals_Audio.json';
 import kannadaSentences from '../public/Kannada_Sentences_Audio.json';
+import kannadaBodyParts from '../public/Kannada_BodyParts_Audio.json';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import WelcomeScreen from './components/WelcomeScreen';
@@ -24,6 +25,7 @@ import CountNumbers from './components/CountNumbers';
 import SignUpPage from './components/SignUpPage';
 import Celebration from './components/Celebration';
 import LearnSentences from './components/LearnSentences';
+import LearnBodyPart from './components/LearnBodyPart';
 
 // Convert JSON object to application format
 const allLetters = Object.entries(kannadaAudioMap).map(([english, data]) => ({
@@ -44,6 +46,13 @@ const allAnimals = kannadaAnimals.map((animalData) => ({
   animal: animalData.kannada,
   englishTranslation: animalData.english,
   audio: animalData.audio_file,
+}));
+
+// Convert body parts JSON to application format
+const allBodyParts = kannadaBodyParts.map((bodyPartData) => ({
+  bodyPart: bodyPartData.kannada,
+  englishTranslation: bodyPartData.english,
+  audio: bodyPartData.audio_file,
 }));
 
 const practiceQuestions = [
@@ -522,6 +531,7 @@ function App() {
   const [currentMiniGameQuestionIndex, setCurrentMiniGameQuestionIndex] = useState(0);
   const [currentNumberIndex, setCurrentNumberIndex] = useState(0);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
+  const [currentBodyPartIndex, setCurrentBodyPartIndex] = useState(0);
   const [stars, setStars] = useState(0);
   const [badges, setBadges] = useState<string[]>([]);
   const [celebration, setCelebration] = useState<{
@@ -693,6 +703,26 @@ function App() {
       const prevIndex = currentSentenceIndex - 1;
       if (prevIndex >= 0) {
         setCurrentSentenceIndex(prevIndex);
+      }
+    }
+  };
+
+  const handleLearnBodyPartNavigation = (direction: 'next' | 'previous') => {
+    if (direction === 'next') {
+      const nextIndex = currentBodyPartIndex + 1;
+      if (nextIndex >= allBodyParts.length) {
+        // All body parts completed, go back to learning category
+        setCurrentBodyPartIndex(0);
+        setCurrentMode('learning-category');
+        handleSuccess('learn');
+      } else {
+        // Move to next body part
+        setCurrentBodyPartIndex(nextIndex);
+      }
+    } else if (direction === 'previous') {
+      const prevIndex = currentBodyPartIndex - 1;
+      if (prevIndex >= 0) {
+        setCurrentBodyPartIndex(prevIndex);
       }
     }
   };
@@ -891,6 +921,18 @@ function App() {
             currentIndex={currentSentenceIndex}
             totalSentences={kannadaSentences.length}
             onNavigate={handleLearnSentencesNavigation}
+          />
+        );
+      case 'bodyparts':
+        const currentBodyPart = allBodyParts[currentBodyPartIndex];
+        return (
+          <LearnBodyPart
+            bodyPart={currentBodyPart.bodyPart}
+            englishTranslation={currentBodyPart.englishTranslation}
+            audioFile={currentBodyPart.audio}
+            currentIndex={currentBodyPartIndex}
+            totalBodyParts={allBodyParts.length}
+            onNavigate={handleLearnBodyPartNavigation}
           />
         );
       case 'signup':
