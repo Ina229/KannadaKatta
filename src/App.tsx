@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
 import kannadaAudioMap from '../public/Kannada_Audio_Mapping.json';
 import kannadaNumbers from '../public/Kannada_Numbers_Audio.json';
