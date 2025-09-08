@@ -24,7 +24,7 @@ const LearnBodyPart: React.FC<LearnBodyPartProps> = ({
     setIsPlaying(true);
     
     if (audioFile) {
-      const audio = new Audio(`/${audioFile}`);
+      const audio = new Audio(audioFile);
       audio.play()
         .then(() => {
           console.log('Body part audio started playing successfully');
