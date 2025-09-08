@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import kannadaAudioMap from '../public/Kannada_Audio_Mapping.json';
 import kannadaNumbers from '../public/Kannada_Numbers_Audio.json';
 import kannadaColors from '../public/Kannada_Colors_Audio.json';
@@ -532,12 +533,28 @@ function App() {
   const [currentNumberIndex, setCurrentNumberIndex] = useState(0);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
   const [currentBodyPartIndex, setCurrentBodyPartIndex] = useState(0);
-  const [stars, setStars] = useState(0);
-  const [badges, setBadges] = useState<string[]>([]);
+  const [stars, setStars] = useState(() => {
+    const savedStars = localStorage.getItem('kannadaKatta_stars');
+    return savedStars ? parseInt(savedStars, 10) : 0;
+  });
+  const [badges, setBadges] = useState<string[]>(() => {
+    const savedBadges = localStorage.getItem('kannadaKatta_badges');
+    return savedBadges ? JSON.parse(savedBadges) : [];
+  });
   const [celebration, setCelebration] = useState<{
     type: 'star' | 'badge';
     message: string;
   } | null>(null);
+
+  // Save stars to localStorage whenever stars change
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_stars', stars.toString());
+  }, [stars]);
+
+  // Save badges to localStorage whenever badges change
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_badges', JSON.stringify(badges));
+  }, [badges]);
 
   const handleSuccess = (type: 'learn' | 'practice' | 'words' | 'game') => {
     setStars(prev => prev + 1);
@@ -784,9 +801,9 @@ function App() {
 
   const handleSignOut = () => {
     setCurrentMode('auth');
-    // Reset user progress if desired
-    // setStars(0);
-    // setBadges([]);
+    // Reset user progress
+    setStars(0);
+    setBadges([]);
   };
 
   const handleSignUpSuccess = () => {
