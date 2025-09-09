@@ -521,17 +521,50 @@ const miniGameQuestions = [
 ];
 
 function App() {
-  const [currentMode, setCurrentMode] = useState('auth');
-  const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
-  const [currentColorIndex, setCurrentColorIndex] = useState(0);
-  const [currentGreetingIndex, setCurrentGreetingIndex] = useState(0);
-  const [currentAnimalIndex, setCurrentAnimalIndex] = useState(0);
-  const [currentPracticeQuestionIndex, setCurrentPracticeQuestionIndex] = useState(0);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [currentMiniGameQuestionIndex, setCurrentMiniGameQuestionIndex] = useState(0);
-  const [currentNumberIndex, setCurrentNumberIndex] = useState(0);
-  const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
-  const [currentBodyPartIndex, setCurrentBodyPartIndex] = useState(0);
+  const [currentMode, setCurrentMode] = useState(() => {
+    const savedMode = localStorage.getItem('kannadaKatta_currentMode');
+    return savedMode || 'auth';
+  });
+  const [currentLetterIndex, setCurrentLetterIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentLetterIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
+  const [currentColorIndex, setCurrentColorIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentColorIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
+  const [currentGreetingIndex, setCurrentGreetingIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentGreetingIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
+  const [currentAnimalIndex, setCurrentAnimalIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentAnimalIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
+  const [currentPracticeQuestionIndex, setCurrentPracticeQuestionIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentPracticeQuestionIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
+  const [currentWordIndex, setCurrentWordIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentWordIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
+  const [currentMiniGameQuestionIndex, setCurrentMiniGameQuestionIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentMiniGameQuestionIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
+  const [currentNumberIndex, setCurrentNumberIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentNumberIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
+  const [currentSentenceIndex, setCurrentSentenceIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentSentenceIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
+  const [currentBodyPartIndex, setCurrentBodyPartIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentBodyPartIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
   const [stars, setStars] = useState(() => {
     const savedStars = localStorage.getItem('kannadaKatta_stars');
     return savedStars ? parseInt(savedStars, 10) : 0;
@@ -540,10 +573,57 @@ function App() {
     const savedBadges = localStorage.getItem('kannadaKatta_badges');
     return savedBadges ? JSON.parse(savedBadges) : [];
   });
+  const [showResumePrompt, setShowResumePrompt] = useState(false);
   const [celebration, setCelebration] = useState<{
     type: 'star' | 'badge';
     message: string;
   } | null>(null);
+
+  // Save current mode to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentMode', currentMode);
+  }, [currentMode]);
+
+  // Save current indices to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentLetterIndex', currentLetterIndex.toString());
+  }, [currentLetterIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentColorIndex', currentColorIndex.toString());
+  }, [currentColorIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentGreetingIndex', currentGreetingIndex.toString());
+  }, [currentGreetingIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentAnimalIndex', currentAnimalIndex.toString());
+  }, [currentAnimalIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentPracticeQuestionIndex', currentPracticeQuestionIndex.toString());
+  }, [currentPracticeQuestionIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentWordIndex', currentWordIndex.toString());
+  }, [currentWordIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentMiniGameQuestionIndex', currentMiniGameQuestionIndex.toString());
+  }, [currentMiniGameQuestionIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentNumberIndex', currentNumberIndex.toString());
+  }, [currentNumberIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentSentenceIndex', currentSentenceIndex.toString());
+  }, [currentSentenceIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentBodyPartIndex', currentBodyPartIndex.toString());
+  }, [currentBodyPartIndex]);
 
   // Save stars to localStorage whenever stars change
   useEffect(() => {
@@ -803,6 +883,18 @@ function App() {
     // Reset user progress
     setStars(0);
     setBadges([]);
+    // Clear all learning progress from localStorage
+    localStorage.removeItem('kannadaKatta_currentMode');
+    localStorage.removeItem('kannadaKatta_currentLetterIndex');
+    localStorage.removeItem('kannadaKatta_currentColorIndex');
+    localStorage.removeItem('kannadaKatta_currentGreetingIndex');
+    localStorage.removeItem('kannadaKatta_currentAnimalIndex');
+    localStorage.removeItem('kannadaKatta_currentPracticeQuestionIndex');
+    localStorage.removeItem('kannadaKatta_currentWordIndex');
+    localStorage.removeItem('kannadaKatta_currentMiniGameQuestionIndex');
+    localStorage.removeItem('kannadaKatta_currentNumberIndex');
+    localStorage.removeItem('kannadaKatta_currentSentenceIndex');
+    localStorage.removeItem('kannadaKatta_currentBodyPartIndex');
   };
 
   const handleSignUpSuccess = () => {
@@ -814,7 +906,45 @@ function App() {
   };
 
   const handleSignInSuccess = () => {
+    // Check if there's saved learning progress
+    const savedMode = localStorage.getItem('kannadaKatta_currentMode');
+    const hasProgress = savedMode && !['auth', 'signup', 'signin', 'landing'].includes(savedMode);
+    
+    if (hasProgress) {
+      setShowResumePrompt(true);
+    }
+    
     setCurrentMode('welcome');
+  };
+
+  const handleResumeGame = () => {
+    // Load all saved progress from localStorage
+    const savedMode = localStorage.getItem('kannadaKatta_currentMode');
+    const savedLetterIndex = localStorage.getItem('kannadaKatta_currentLetterIndex');
+    const savedColorIndex = localStorage.getItem('kannadaKatta_currentColorIndex');
+    const savedGreetingIndex = localStorage.getItem('kannadaKatta_currentGreetingIndex');
+    const savedAnimalIndex = localStorage.getItem('kannadaKatta_currentAnimalIndex');
+    const savedPracticeQuestionIndex = localStorage.getItem('kannadaKatta_currentPracticeQuestionIndex');
+    const savedWordIndex = localStorage.getItem('kannadaKatta_currentWordIndex');
+    const savedMiniGameQuestionIndex = localStorage.getItem('kannadaKatta_currentMiniGameQuestionIndex');
+    const savedNumberIndex = localStorage.getItem('kannadaKatta_currentNumberIndex');
+    const savedSentenceIndex = localStorage.getItem('kannadaKatta_currentSentenceIndex');
+    const savedBodyPartIndex = localStorage.getItem('kannadaKatta_currentBodyPartIndex');
+
+    // Set all the saved states
+    if (savedMode) setCurrentMode(savedMode);
+    if (savedLetterIndex) setCurrentLetterIndex(parseInt(savedLetterIndex, 10));
+    if (savedColorIndex) setCurrentColorIndex(parseInt(savedColorIndex, 10));
+    if (savedGreetingIndex) setCurrentGreetingIndex(parseInt(savedGreetingIndex, 10));
+    if (savedAnimalIndex) setCurrentAnimalIndex(parseInt(savedAnimalIndex, 10));
+    if (savedPracticeQuestionIndex) setCurrentPracticeQuestionIndex(parseInt(savedPracticeQuestionIndex, 10));
+    if (savedWordIndex) setCurrentWordIndex(parseInt(savedWordIndex, 10));
+    if (savedMiniGameQuestionIndex) setCurrentMiniGameQuestionIndex(parseInt(savedMiniGameQuestionIndex, 10));
+    if (savedNumberIndex) setCurrentNumberIndex(parseInt(savedNumberIndex, 10));
+    if (savedSentenceIndex) setCurrentSentenceIndex(parseInt(savedSentenceIndex, 10));
+    if (savedBodyPartIndex) setCurrentBodyPartIndex(parseInt(savedBodyPartIndex, 10));
+
+    setShowResumePrompt(false);
   };
 
   const renderCurrentMode = () => {
@@ -828,7 +958,11 @@ function App() {
         );
       case 'welcome':
         return (
-          <WelcomeScreen onModeSelect={setCurrentMode} />
+          <WelcomeScreen 
+            onModeSelect={setCurrentMode} 
+            showResumePrompt={showResumePrompt}
+            onResumeGame={handleResumeGame}
+          />
         );
       case 'learning-category':
         return (
