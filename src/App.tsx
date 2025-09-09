@@ -880,9 +880,6 @@ function App() {
 
   const handleSignOut = () => {
     setCurrentMode('auth');
-    // Reset user progress
-    setStars(0);
-    setBadges([]);
     // Clear all learning progress from localStorage
     localStorage.removeItem('kannadaKatta_currentMode');
     localStorage.removeItem('kannadaKatta_currentLetterIndex');
