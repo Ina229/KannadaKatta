@@ -73,5 +73,80 @@
     "english": "See you later",
     "kannada": "ನಂತರ ಭೇಟಿಯಾಗೋಣ",
     "audio_file": "see_you_later.mp3"
+  },
+  {
+    "english": "What is this?",
+    "kannada": "ಇದು ಏನು?",
+    "audio_file": "idu_enu.mp3"
+  },
+  {
+    "english": "I am learning Kannada",
+    "kannada": "ನಾನು ಕನ್ನಡ ಕಲಿಯುತ್ತಿದ್ದೇನೆ",
+    "audio_file": "nanu_kannada_kaliyuttiddene.mp3"
+  },
+  {
+    "english": "Please speak slowly",
+    "kannada": "ದಯವಿಟ್ಟು ನಿಧಾನವಾಗಿ ಮಾತನಾಡಿ",
+    "audio_file": "dayavittu_nidhanavagi_matanadi.mp3"
+  },
+  {
+    "english": "Where is the hospital?",
+    "kannada": "ಆಸ್ಪತ್ರೆ ಎಲ್ಲಿದೆ?",
+    "audio_file": "aspatre_ellide.mp3"
+  },
+  {
+    "english": "I am happy",
+    "kannada": "ನಾನು ಸಂತೋಷವಾಗಿದ್ದೇನೆ",
+    "audio_file": "nanu_santoshavagiddene.mp3"
+  },
+  {
+    "english": "What is your favorite food?",
+    "kannada": "ನಿಮ್ಮ ನೆಚ್ಚಿನ ಆಹಾರ ಯಾವುದು?",
+    "audio_file": "nimma_nechina_ahara_yavudu.mp3"
+  },
+  {
+    "english": "I like this very much",
+    "kannada": "ನನಗೆ ಇದು ತುಂಬಾ ಇಷ್ಟ",
+    "audio_file": "nanage_idu_tumba_ishta.mp3"
+  },
+  {
+    "english": "How old are you?",
+    "kannada": "ನಿಮ್ಮ ವಯಸ್ಸು ಎಷ್ಟು?",
+    "audio_file": "nimma_vayassu_eshtu.mp3"
+  },
+  {
+    "english": "I am tired",
+    "kannada": "ನನಗೆ ಆಯಾಸವಾಗಿದೆ",
+    "audio_file": "nanage_ayasavagide.mp3"
+  },
+  {
+    "english": "Where is the market?",
+    "kannada": "ಮಾರುಕಟ್ಟೆ ಎಲ್ಲಿದೆ?",
+    "audio_file": "marukatte_ellide.mp3"
+  },
+  {
+    "english": "I want to go home",
+    "kannada": "ನಾನು ಮನೆಗೆ ಹೋಗಬೇಕು",
+    "audio_file": "nanu_manege_hogabeku.mp3"
+  },
+  {
+    "english": "What is the weather like?",
+    "kannada": "ಹವಾಮಾನ ಹೇಗಿದೆ?",
+    "audio_file": "havamana_hegide.mp3"
+  },
+  {
+    "english": "I am cold",
+    "kannada": "ನನಗೆ ತಣ್ಣಗಾಗಿದೆ",
+    "audio_file": "nanage_tannagagide.mp3"
+  },
+  {
+    "english": "I am hot",
+    "kannada": "ನನಗೆ ಬಿಸಿಯಾಗಿದೆ",
+    "audio_file": "nanage_bisiyagide.mp3"
+  },
+  {
+    "english": "Do you speak English?",
+    "kannada": "ನೀವು ಇಂಗ್ಲಿಷ್ ಮಾತನಾಡುತ್ತೀರಾ?",
+    "audio_file": "neevu_english_matnaduttira.mp3"
   }
 ]
