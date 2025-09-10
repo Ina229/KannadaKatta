@@ -117,13 +117,13 @@ export default function LearningCategoryScreen({ onModeSelect, onBack }: Learnin
       emoji: '🖐️'
     },
     {
-      id: 'speak-sentences',
-      title: 'Speak Sentences',
-      description: 'Practice daily conversations and phrases',
-      icon: MessageSquare,
-      color: 'from-violet-500 to-purple-600',
-      hoverColor: 'hover:from-violet-600 hover:to-purple-700',
-      emoji: '💬'
+      id: 'speak-animals',
+      title: 'Speak Animals',
+      description: 'Practice pronouncing animal names in Kannada',
+      icon: Mic,
+      color: 'from-red-500 to-pink-600',
+      hoverColor: 'hover:from-red-600 hover:to-pink-700',
+      emoji: '🎤'
     }
   ];
 
