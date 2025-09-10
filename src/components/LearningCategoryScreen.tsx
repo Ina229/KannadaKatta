@@ -79,7 +79,6 @@ export default function LearningCategoryScreen({ onModeSelect, onBack }: Learnin
       color: 'from-cyan-500 to-blue-600',
       hoverColor: 'hover:from-cyan-600 hover:to-blue-700',
       emoji: '🖐️'
-    }
     },
     {
       id: 'speak',
