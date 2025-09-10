@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Palette, MessageCircle, Hash, Heart, ArrowLeft, Sparkles, Building2, MessageSquare, Hand } from 'lucide-react';
+import { BookOpen, Palette, MessageCircle, Hash, Heart, ArrowLeft, Sparkles, Building2, MessageSquare, Hand, Mic } from 'lucide-react';
 
 interface LearningCategoryScreenProps {
   onModeSelect: (mode: string) => void;
@@ -79,6 +79,16 @@ export default function LearningCategoryScreen({ onModeSelect, onBack }: Learnin
       color: 'from-cyan-500 to-blue-600',
       hoverColor: 'hover:from-cyan-600 hover:to-blue-700',
       emoji: '🖐️'
+    }
+    },
+    {
+      id: 'speak',
+      title: 'Practice Speaking',
+      description: 'Practice pronunciation with speech recognition',
+      icon: Mic,
+      color: 'from-red-500 to-pink-600',
+      hoverColor: 'hover:from-red-600 hover:to-pink-700',
+      emoji: '🎤'
     }
   ];
 
