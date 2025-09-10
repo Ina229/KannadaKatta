@@ -7,10 +7,35 @@ interface SentenceData {
   audio_file: string;
 }
 
+interface ColorData {
+  english: string;
+  kannada: string;
+  audio_file: string;
+}
+
+interface NumberData {
+  english: string;
+  kannada: string;
+  audio_file: string;
+}
+
+interface GreetingData {
+  english: string;
+  kannada: string;
+  audio_file: string;
+}
+
+interface BodyPartData {
+  english: string;
+  kannada: string;
+  audio_file: string;
+}
+
 interface SpeakProps {
-  sentences: SentenceData[];
+  type: 'sentences' | 'colors' | 'numbers' | 'greetings' | 'bodyparts';
+  data: SentenceData[] | ColorData[] | NumberData[] | GreetingData[] | BodyPartData[];
   currentIndex: number;
-  totalSentences: number;
+  totalItems: number;
   onNavigate: (direction: 'next' | 'previous') => void;
 }
 
@@ -46,9 +71,10 @@ declare global {
 }
 
 const Speak: React.FC<SpeakProps> = ({
-  sentences,
+  type,
+  data,
   currentIndex,
-  totalSentences,
+  totalItems,
   onNavigate,
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -64,7 +90,7 @@ const Speak: React.FC<SpeakProps> = ({
   const [userAudio, setUserAudio] = useState<Blob | null>(null);
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
 
-  const currentSentence = sentences[currentIndex];
+  const currentItem = data[currentIndex];
 
   // Initialize speech recognition
   useEffect(() => {
@@ -112,7 +138,7 @@ const Speak: React.FC<SpeakProps> = ({
     }
   }, []);
 
-  // Reset state when sentence changes
+  // Reset state when item changes
   useEffect(() => {
     setRecognizedText('');
     setFeedback({ type: null, message: '' });
@@ -137,20 +163,20 @@ const Speak: React.FC<SpeakProps> = ({
   const playAudio = () => {
     setIsPlaying(true);
     
-    if (currentSentence.audio_file) {
-      const audio = new Audio(`/${currentSentence.audio_file}`);
+    if (currentItem.audio_file) {
+      const audio = new Audio(`/${currentItem.audio_file}`);
       audio.play()
         .then(() => {
           console.log('Audio started playing successfully');
         })
         .catch(error => {
-          console.warn('Audio file not available:', currentSentence.audio_file);
+          console.warn('Audio file not available:', currentItem.audio_file);
         })
         .finally(() => {
-          setTimeout(() => setIsPlaying(false), 2000);
+          setTimeout(() => setIsPlaying(false), type === 'sentences' ? 2000 : 1500);
         });
     } else {
-      setTimeout(() => setIsPlaying(false), 2000);
+      setTimeout(() => setIsPlaying(false), type === 'sentences' ? 2000 : 1500);
     }
   };
 
@@ -204,12 +230,12 @@ const Speak: React.FC<SpeakProps> = ({
   };
 
   const checkPronunciation = (spokenText: string) => {
-    const targetText = currentSentence.kannada.toLowerCase().trim();
+    const targetText = currentItem.kannada.toLowerCase().trim();
     const spokenTextLower = spokenText.toLowerCase().trim();
     
     setAttempts(prev => prev + 1);
 
-    // Simple similarity check - in a real app, you might want more sophisticated matching
+    // Simple similarity check
     const similarity = calculateSimilarity(targetText, spokenTextLower);
     
     if (similarity > 0.7) { // 70% similarity threshold
@@ -236,7 +262,6 @@ const Speak: React.FC<SpeakProps> = ({
   };
 
   const calculateSimilarity = (target: string, spoken: string): number => {
-    // Simple Levenshtein distance-based similarity
     const maxLength = Math.max(target.length, spoken.length);
     if (maxLength === 0) return 1;
     
@@ -314,80 +339,179 @@ const Speak: React.FC<SpeakProps> = ({
     onNavigate('previous');
   };
 
-  // Get appropriate emoji for different sentence types
-  const getSentenceEmoji = (english: string): string => {
-    const emojiMap: { [key: string]: string } = {
-      'What is your name?': '👤',
-      'My name is...': '🙋',
-      'Where are you going?': '🚶',
-      'I am going to school': '🏫',
-      'What time is it?': '⏰',
-      'I am hungry': '🍽️',
-      'I am thirsty': '🥤',
-      'Where is the bathroom?': '🚻',
-      'How much does this cost?': '💰',
-      'I don\'t understand': '🤔',
-      'Can you help me?': '🤝',
-      'I need help': '🆘',
-      'Where do you live?': '🏠',
-      'I live in Bangalore': '🏙️',
-      'See you later': '👋',
-      'Good Morning': '🌅',
-      'Good Afternoon': '☀️',
-      'Good Evening': '🌆',
-      'Good Night': '🌙',
-      'Hello': '👋',
-      'How are you?': '🤔',
-      'I am fine': '😊',
-      'Thank you': '🙏',
-      'Please': '🤲',
-      'Sorry': '😔',
-      'Excuse me': '🙋',
-      'Yes': '✅',
-      'No': '❌',
-      'Welcome': '🤗',
-      'Goodbye': '👋',
-    };
-    return emojiMap[english] || '🎤';
+  // Get appropriate emoji for different types
+  const getItemEmoji = (type: string, english: string): string => {
+    switch (type) {
+      case 'colors':
+        return '🎨';
+      case 'numbers':
+        return '🔢';
+      case 'greetings':
+        const greetingEmojiMap: { [key: string]: string } = {
+          'Good Morning': '🌅',
+          'Good Afternoon': '☀️',
+          'Good Evening': '🌆',
+          'Good Night': '🌙',
+          'Hello': '👋',
+          'How are you?': '🤔',
+          'I am fine': '😊',
+          'Thank you': '🙏',
+          'Please': '🤲',
+          'Sorry': '😔',
+          'Excuse me': '🙋',
+          'Yes': '✅',
+          'No': '❌',
+          'Welcome': '🤗',
+          'Goodbye': '👋',
+        };
+        return greetingEmojiMap[english] || '💬';
+      case 'bodyparts':
+        const bodyPartEmojiMap: { [key: string]: string } = {
+          'head': '👤',
+          'hand': '✋',
+          'eye': '👁️',
+          'nose': '👃',
+          'mouth': '👄',
+          'ear': '👂',
+          'foot': '🦶',
+          'leg': '🦵',
+          'arm': '💪',
+          'finger': '👆',
+          'hair': '💇',
+          'face': '😊',
+          'neck': '🤱',
+          'shoulder': '🤷',
+          'back': '🔙',
+        };
+        return bodyPartEmojiMap[english.toLowerCase()] || '👤';
+      case 'sentences':
+        const sentenceEmojiMap: { [key: string]: string } = {
+          'What is your name?': '👤',
+          'My name is...': '🙋',
+          'Where are you going?': '🚶',
+          'I am going to school': '🏫',
+          'What time is it?': '⏰',
+          'I am hungry': '🍽️',
+          'I am thirsty': '🥤',
+          'Where is the bathroom?': '🚻',
+          'How much does this cost?': '💰',
+          'I don\'t understand': '🤔',
+          'Can you help me?': '🤝',
+          'I need help': '🆘',
+          'Where do you live?': '🏠',
+          'I live in Bangalore': '🏙️',
+          'See you later': '👋',
+        };
+        return sentenceEmojiMap[english] || '🎤';
+      default:
+        return '🎤';
+    }
   };
+
+  // Get color value for visual display (only for colors)
+  const getColorValue = (englishName: string): string => {
+    const colorMap: { [key: string]: string } = {
+      'red': '#ef4444',
+      'blue': '#3b82f6',
+      'green': '#22c55e',
+      'yellow': '#eab308',
+      'orange': '#f97316',
+      'purple': '#a855f7',
+      'pink': '#ec4899',
+      'black': '#000000',
+      'white': '#ffffff',
+      'brown': '#a3a3a3',
+      'gray': '#6b7280',
+      'grey': '#6b7280',
+    };
+    return colorMap[englishName.toLowerCase()] || '#6b7280';
+  };
+
+  // Get title and icon based on type
+  const getTypeInfo = () => {
+    switch (type) {
+      case 'colors':
+        return { title: 'Practice Speaking Colors', icon: '🎨', bgColor: 'from-pink-200 via-purple-200 to-indigo-200' };
+      case 'numbers':
+        return { title: 'Practice Speaking Numbers', icon: '🔢', bgColor: 'from-teal-200 via-cyan-200 to-blue-200' };
+      case 'greetings':
+        return { title: 'Practice Speaking Greetings', icon: '👋', bgColor: 'from-green-200 via-teal-200 to-blue-200' };
+      case 'bodyparts':
+        return { title: 'Practice Speaking Body Parts', icon: '🖐️', bgColor: 'from-cyan-200 via-blue-200 to-indigo-200' };
+      case 'sentences':
+        return { title: 'Practice Speaking Sentences', icon: '💬', bgColor: 'from-red-200 via-pink-200 to-purple-200' };
+      default:
+        return { title: 'Practice Speaking', icon: '🎤', bgColor: 'from-purple-200 via-pink-200 to-indigo-200' };
+    }
+  };
+
+  const typeInfo = getTypeInfo();
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
       <div className="magical-card rounded-3xl shadow-2xl p-8 max-w-3xl w-full text-center animate-glow">
         <h2 className="text-3xl font-bold gradient-text mb-6 flex items-center justify-center">
           <Mic className="h-10 w-10 mr-2 text-red-500 animate-sparkle" />
-          Practice Speaking
+          {typeInfo.title}
         </h2>
         
         {/* Progress Indicator */}
         <div className="text-lg font-semibold text-gray-700 mb-4">
-          Sentence {currentIndex + 1} of {totalSentences}
+          {type.charAt(0).toUpperCase() + type.slice(1, -1)} {currentIndex + 1} of {totalItems}
         </div>
         
         {/* Instruction */}
         <div className="text-lg font-semibold text-gray-700 mb-4">
-          Listen, then speak the Kannada sentence!
+          Listen, then speak the Kannada {type === 'bodyparts' ? 'body part' : type.slice(0, -1)}!
         </div>
         
-        {/* Sentence Display */}
-        <div className="bg-gradient-to-r from-red-200 via-pink-200 to-purple-200 rounded-2xl p-8 mb-8 shadow-lg animate-glow">
+        {/* Item Display */}
+        <div className={`bg-gradient-to-r ${typeInfo.bgColor} rounded-2xl p-8 mb-8 shadow-lg animate-glow`}>
           <div className="text-xl font-semibold text-gray-800 mb-4">
-            Practice speaking this sentence:
+            Practice speaking this {type === 'bodyparts' ? 'body part' : type.slice(0, -1)}:
           </div>
           
-          {/* Sentence Emoji */}
-          <div className="text-6xl mb-6 animate-bounce-gentle">
-            {getSentenceEmoji(currentSentence.english)}
-          </div>
+          {/* Item Emoji or Color Circle */}
+          {type === 'colors' ? (
+            <div className="flex justify-center mb-6">
+              <div 
+                className="w-32 h-32 rounded-full shadow-2xl border-4 border-white animate-bounce-gentle"
+                style={{ 
+                  backgroundColor: getColorValue(currentItem.english),
+                  boxShadow: `0 0 30px ${getColorValue(currentItem.english)}40`
+                }}
+              ></div>
+            </div>
+          ) : (
+            <div className="text-6xl mb-6 animate-bounce-gentle">
+              {getItemEmoji(type, currentItem.english)}
+            </div>
+          )}
           
-          {/* English Sentence */}
-          <div className="text-xl md:text-2xl font-bold text-gray-700 mb-6 bg-white/50 rounded-xl p-4 shadow-md">
-            "{currentSentence.english}"
-          </div>
+          {/* English Translation */}
+          {type === 'sentences' ? (
+            <div className="text-xl md:text-2xl font-bold text-gray-700 mb-6 bg-white/50 rounded-xl p-4 shadow-md">
+              "{currentItem.english}"
+            </div>
+          ) : (
+            <div className="text-2xl font-bold text-gray-700 mb-6 capitalize">
+              {currentItem.english}
+            </div>
+          )}
           
-          {/* Kannada Sentence */}
-          <div className="text-2xl sm:text-3xl md:text-4xl font-bold py-6 px-8 rounded-2xl shadow-xl mb-6 bg-gradient-to-br from-red-300 to-pink-300 text-red-800">
-            {currentSentence.kannada}
+          {/* Kannada Text */}
+          <div className={`font-bold py-6 px-8 rounded-2xl shadow-xl mb-6 ${
+            type === 'sentences' 
+              ? 'text-2xl sm:text-3xl md:text-4xl bg-gradient-to-br from-red-300 to-pink-300 text-red-800'
+              : type === 'colors'
+              ? 'text-4xl sm:text-6xl bg-gradient-to-br from-pink-300 to-purple-300 text-pink-800'
+              : type === 'numbers'
+              ? 'text-4xl sm:text-6xl bg-gradient-to-br from-teal-300 to-cyan-300 text-teal-800'
+              : type === 'greetings'
+              ? 'text-3xl sm:text-5xl bg-gradient-to-br from-green-300 to-teal-300 text-green-800'
+              : 'text-4xl sm:text-6xl bg-gradient-to-br from-cyan-300 to-blue-300 text-cyan-800'
+          }`}>
+            {currentItem.kannada}
           </div>
           
           {/* Audio Controls */}
@@ -512,14 +636,14 @@ const Speak: React.FC<SpeakProps> = ({
           
           <button
             onClick={handleNext}
-            disabled={currentIndex === totalSentences - 1}
+            disabled={currentIndex === totalItems - 1}
             className={`rounded-full font-bold shadow-lg transition-all duration-300 ${
-              currentIndex === totalSentences - 1
+              currentIndex === totalItems - 1
                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed px-4 py-2'
                 : 'bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 text-white px-6 py-3 shadow-xl hover:shadow-2xl hover:scale-105 animate-glow'
             }`}
           >
-            {currentIndex === totalSentences - 1 ? 'Complete' : 'Next'} 
+            {currentIndex === totalItems - 1 ? 'Complete' : 'Next'} 
             <ArrowRight className="inline-block ml-2 h-5 w-5" />
           </button>
         </div>

@@ -26,12 +26,7 @@ import SignUpPage from './components/SignUpPage';
 import Celebration from './components/Celebration';
 import LearnSentences from './components/LearnSentences';
 import LearnBodyPart from './components/LearnBodyPart';
-import SpeakCategoryScreen from './components/SpeakCategoryScreen';
-import SpeakColor from './components/SpeakColor';
-import SpeakNumber from './components/SpeakNumber';
-import SpeakGreeting from './components/SpeakGreeting';
-import SpeakBodyPart from './components/SpeakBodyPart';
-import SpeakSentence from './components/SpeakSentence';
+import Speak from './components/Speak';
 
 // Convert JSON object to application format
 const allLetters = Object.entries(kannadaAudioMap).map(([english, data]) => ({
@@ -1245,53 +1240,61 @@ function App() {
         );
       case 'speak-category':
         return (
-          <SpeakCategoryScreen 
-            onModeSelect={setCurrentMode} 
-            onBack={() => setCurrentMode('learning-category')}
+          <Speak
+            type="colors"
+            data={kannadaColors}
+            currentIndex={currentSpeakColorIndex}
+            totalItems={kannadaColors.length}
+            onNavigate={handleSpeakColorNavigation}
           />
         );
       case 'speak-colors':
         return (
-          <SpeakColor
-            colors={kannadaColors}
+          <Speak
+            type="colors"
+            data={kannadaColors}
             currentIndex={currentSpeakColorIndex}
-            totalColors={kannadaColors.length}
+            totalItems={kannadaColors.length}
             onNavigate={handleSpeakColorNavigation}
           />
         );
       case 'speak-numbers':
         return (
-          <SpeakNumber
-            numbers={kannadaNumbers}
+          <Speak
+            type="numbers"
+            data={kannadaNumbers}
             currentIndex={currentSpeakNumberIndex}
-            totalNumbers={kannadaNumbers.length}
+            totalItems={kannadaNumbers.length}
             onNavigate={handleSpeakNumberNavigation}
           />
         );
       case 'speak-greetings':
         return (
-          <SpeakGreeting
-            greetings={kannadaGreetings}
+          <Speak
+            type="greetings"
+            data={kannadaGreetings}
             currentIndex={currentSpeakGreetingIndex}
-            totalGreetings={kannadaGreetings.length}
+            totalItems={kannadaGreetings.length}
             onNavigate={handleSpeakGreetingNavigation}
           />
         );
       case 'speak-bodyparts':
         return (
-          <SpeakBodyPart
-            bodyParts={kannadaBodyParts}
+          <Speak
+            type="bodyparts"
+            data={kannadaBodyParts}
             currentIndex={currentSpeakBodyPartIndex}
-            totalBodyParts={kannadaBodyParts.length}
+            totalItems={kannadaBodyParts.length}
             onNavigate={handleSpeakBodyPartNavigation}
           />
         );
       case 'speak-sentences':
         return (
-          <SpeakSentence
-            sentences={kannadaSentences}
+          <Speak
+            type="sentences"
+            data={kannadaSentences}
             currentIndex={currentSpeakSentenceIndex}
-            totalSentences={kannadaSentences.length}
+            totalItems={kannadaSentences.length}
             onNavigate={handleSpeakSentenceNavigation}
           />
         );
