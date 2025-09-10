@@ -81,7 +81,7 @@ export default function LearningCategoryScreen({ onModeSelect, onBack }: Learnin
       emoji: '🖐️'
     },
     {
-      id: 'speak',
+      id: 'speak-category',
       title: 'Practice Speaking',
       description: 'Practice pronunciation with speech recognition',
       icon: Mic,
