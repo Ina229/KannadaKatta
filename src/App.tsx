@@ -1100,6 +1100,11 @@ function App() {
     setShowResumePrompt(false);
   };
 
+  const handleWelcomeModeSelect = (mode: string) => {
+    setCurrentMode(mode);
+    setShowResumePrompt(false);
+  };
+
   const renderCurrentMode = () => {
     switch (currentMode) {
       case 'auth':
@@ -1112,7 +1117,7 @@ function App() {
       case 'welcome':
         return (
           <WelcomeScreen 
-            onModeSelect={setCurrentMode} 
+            onModeSelect={handleWelcomeModeSelect} 
             showResumePrompt={showResumePrompt}
             onResumeGame={handleResumeGame}
           />
