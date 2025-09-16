@@ -602,6 +602,7 @@ function App() {
 
   // Save current mode to localStorage whenever it changes
   useEffect(() => {
+    console.log('🔍 Debug - Saving currentMode to localStorage:', currentMode);
     localStorage.setItem('kannadaKatta_currentMode', currentMode);
   }, [currentMode]);
 
@@ -1051,13 +1052,20 @@ function App() {
   const handleSignInSuccess = () => {
     // Check if there's saved learning progress
     const savedMode = localStorage.getItem('kannadaKatta_currentMode');
+    console.log('🔍 Debug - savedMode from localStorage:', savedMode);
     const hasProgress = savedMode && !['auth', 'signup', 'signin', 'landing'].includes(savedMode);
+    console.log('🔍 Debug - hasProgress calculated:', hasProgress);
+    console.log('🔍 Debug - showResumePrompt before setting:', showResumePrompt);
     
     if (hasProgress) {
       setShowResumePrompt(true);
+      console.log('🔍 Debug - setShowResumePrompt(true) called');
+    } else {
+      console.log('🔍 Debug - No progress found, not showing resume prompt');
     }
     
     setCurrentMode('welcome');
+    console.log('🔍 Debug - setCurrentMode("welcome") called');
   };
 
   const handleResumeGame = () => {

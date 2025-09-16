@@ -8,6 +8,8 @@ interface WelcomeScreenProps {
 }
 
 export default function WelcomeScreen({ onModeSelect, showResumePrompt, onResumeGame }: WelcomeScreenProps) {
+  console.log('🔍 Debug - WelcomeScreen showResumePrompt prop:', showResumePrompt);
+  
   const mainOptions = [
     {
       id: 'learning-category',
