@@ -128,7 +128,7 @@ export default function LearningCategoryScreen({ onModeSelect, onBack }: Learnin
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 relative">
+    <div className="flex flex-col items-center justify-center p-6 relative min-h-full">
       {/* Back Button */}
       <button
         onClick={onBack}

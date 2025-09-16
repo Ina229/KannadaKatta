@@ -1400,7 +1400,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden animated-bg">
+    <div className="min-h-screen relative flex flex-col animated-bg">
       {/* Floating decorative elements */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-20 h-20 floating-orb rounded-full animate-float animate-sparkle"></div>
@@ -1420,7 +1420,7 @@ function App() {
         isAuthenticated={!['auth', 'signup', 'signin', 'landing'].includes(currentMode)}
       />
       
-      <main className="pb-32">
+      <main className="pb-32 flex-grow overflow-y-auto">
         {renderCurrentMode()}
       </main>
       

@@ -384,6 +384,25 @@ const Speak: React.FC<SpeakProps> = ({
           'back': '🔙',
         };
         return bodyPartEmojiMap[english.toLowerCase()] || '👤';
+      case 'animals':
+        const animalEmojiMap: { [key: string]: string } = {
+          'dog': '🐕',
+          'cat': '🐱',
+          'cow': '🐄',
+          'tiger': '🐅',
+          'elephant': '🐘',
+          'horse': '🐎',
+          'bird': '🐦',
+          'fish': '🐟',
+          'monkey': '🐒',
+          'rabbit': '🐰',
+          'goat': '🐐',
+          'buffalo': '🐃',
+          'lion': '🦁',
+          'bear': '🐻',
+          'deer': '🦌',
+        };
+        return animalEmojiMap[english.toLowerCase()] || '🐾';
       case 'sentences':
         const sentenceEmojiMap: { [key: string]: string } = {
           'What is your name?': '👤',
