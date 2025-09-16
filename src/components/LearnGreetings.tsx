@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Volume2, MessageCircle, ArrowRight } from 'lucide-react';
+import { MessageCircle, ArrowRight } from 'lucide-react';
+import SpeechPracticeModule from './SpeechPracticeModule';
 
 interface GreetingData {
   english: string;
@@ -20,29 +21,11 @@ const LearnGreetings: React.FC<LearnGreetingsProps> = ({
   totalGreetings,
   onNavigate,
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
   const currentGreeting = greetings[currentIndex];
 
-  const handleGreetingClick = () => {
-    setIsPlaying(true);
-    
-    if (currentGreeting.audio_file) {
-      const audio = new Audio(`/${currentGreeting.audio_file}`);
-      audio.play()
-        .then(() => {
-          console.log('Greeting audio started playing successfully');
-        })
-        .catch(error => {
-          console.warn('Audio file not available:', currentGreeting.audio_file);
-          // Provide visual feedback even when audio is not available
-        })
-        .finally(() => {
-          setTimeout(() => setIsPlaying(false), 1500);
-        });
-    } else {
-      setTimeout(() => setIsPlaying(false), 1500);
-    }
+  const handlePronunciationSuccess = () => {
+    console.log('Pronunciation success for greeting:', currentGreeting.kannada);
+    // Add visual feedback or other success handling here
   };
 
   const handleNext = () => {
@@ -110,32 +93,17 @@ const LearnGreetings: React.FC<LearnGreetingsProps> = ({
           </div>
           
           {/* Kannada Greeting */}
-          <button
-            onClick={handleGreetingClick}
-            disabled={isPlaying}
-            className={`text-4xl sm:text-6xl font-bold py-6 px-8 sm:py-8 sm:px-12 rounded-2xl shadow-xl transition-all duration-300 hover:scale-110 animate-glow mb-6 ${
-              isPlaying
-                ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-white animate-bounce-gentle animate-sparkle'
-                : 'bg-gradient-to-br from-green-300 to-teal-300 text-green-800 hover:from-green-400 hover:to-teal-400 shadow-lg'
-            }`}
-          >
+          <div className="text-4xl sm:text-6xl font-bold py-6 px-8 sm:py-8 sm:px-12 rounded-2xl shadow-xl mb-6 bg-gradient-to-br from-green-300 to-teal-300 text-green-800 shadow-lg">
             {currentGreeting.kannada}
-          </button>
-          
-          <br />
-          
-          {/* Play Sound Button */}
-          <button
-            onClick={handleGreetingClick}
-            disabled={isPlaying}
-            className={`bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 text-white px-8 py-4 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all duration-300 animate-glow ${
-              isPlaying ? 'animate-rainbow scale-110' : 'hover:scale-110'
-            }`}
-          >
-            <Volume2 className="inline-block mr-2 h-6 w-6 animate-sparkle" />
-            {isPlaying ? 'Playing...' : 'Play Sound'}
-          </button>
+          </div>
         </div>
+        
+        {/* Speech Practice Module */}
+        <SpeechPracticeModule
+          item={currentGreeting}
+          type="greetings"
+          onPronunciationSuccess={handlePronunciationSuccess}
+        />
         
         {/* Navigation Controls */}
         <div className="flex justify-between items-center">

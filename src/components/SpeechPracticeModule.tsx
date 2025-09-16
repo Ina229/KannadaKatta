@@ -37,11 +37,17 @@ interface AnimalData {
   audio_file: string;
 }
 
-type ItemData = SentenceData | ColorData | NumberData | GreetingData | BodyPartData | AnimalData;
+interface LetterData {
+  english: string;
+  kannada: string;
+  audio_file: string;
+}
+
+type ItemData = SentenceData | ColorData | NumberData | GreetingData | BodyPartData | AnimalData | LetterData;
 
 interface SpeechPracticeModuleProps {
   item: ItemData;
-  type: 'sentences' | 'colors' | 'numbers' | 'greetings' | 'bodyparts' | 'animals';
+  type: 'sentences' | 'colors' | 'numbers' | 'greetings' | 'bodyparts' | 'animals' | 'letters';
   onPronunciationSuccess?: () => void;
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Volume2, Hash, ArrowRight } from 'lucide-react';
+import { Hash, ArrowRight } from 'lucide-react';
+import SpeechPracticeModule from './SpeechPracticeModule';
 
 interface NumberData {
   english: string;
@@ -14,28 +15,12 @@ interface CountNumbersProps {
 
 export default function CountNumbers({ numbers, onComplete }: CountNumbersProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   const currentNumber = numbers[currentIndex];
 
-  const handleNumberClick = () => {
-    setIsPlaying(true);
-    
-    if (currentNumber.audio_file) {
-      const audio = new Audio(`/${currentNumber.audio_file}`);
-      audio.play()
-        .then(() => {
-          console.log('Audio started playing successfully');
-        })
-        .catch(error => {
-          console.error('Error playing audio:', error);
-        })
-        .finally(() => {
-          setTimeout(() => setIsPlaying(false), 1200);
-        });
-    } else {
-      setTimeout(() => setIsPlaying(false), 1200);
-    }
+  const handlePronunciationSuccess = () => {
+    console.log('Pronunciation success for number:', currentNumber.kannada);
+    // Add visual feedback or other success handling here
   };
 
   const handleNext = () => {
@@ -78,31 +63,17 @@ export default function CountNumbers({ numbers, onComplete }: CountNumbersProps)
           </div>
           
           {/* Kannada Number */}
-          <button
-            onClick={handleNumberClick}
-            disabled={isPlaying}
-            className={`text-3xl sm:text-5xl md:text-7xl font-bold py-4 px-4 sm:py-6 sm:px-8 md:py-8 md:px-12 rounded-2xl transition-all duration-300 ${
-              isPlaying
-                ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-white animate-bounce-gentle animate-sparkle'
-                : 'bg-gradient-to-br from-orange-300 to-yellow-300 text-orange-800 hover:from-orange-400 hover:to-yellow-400 shadow-lg'
-            }`}
-          >
+          <div className="text-3xl sm:text-5xl md:text-7xl font-bold py-4 px-4 sm:py-6 sm:px-8 md:py-8 md:px-12 rounded-2xl bg-gradient-to-br from-orange-300 to-yellow-300 text-orange-800 shadow-lg mb-6">
             {currentNumber.kannada}
-          </button>
-          
-          <div className="mt-4">
-            <button
-              onClick={handleNumberClick}
-              disabled={isPlaying}
-              className={`bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all duration-300 animate-glow ${
-                isPlaying ? 'animate-rainbow scale-110' : 'hover:scale-110'
-              }`}
-            >
-              <Volume2 className="inline-block mr-2 h-6 w-6 animate-sparkle" />
-              {isPlaying ? 'Playing...' : 'Play Sound'}
-            </button>
           </div>
         </div>
+        
+        {/* Speech Practice Module */}
+        <SpeechPracticeModule
+          item={currentNumber}
+          type="numbers"
+          onPronunciationSuccess={handlePronunciationSuccess}
+        />
         
         {/* Navigation Controls */}
         <div className="flex justify-between items-center">

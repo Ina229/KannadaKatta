@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Volume2, Hand, ArrowRight } from 'lucide-react';
+import { Hand, ArrowRight } from 'lucide-react';
+import SpeechPracticeModule from './SpeechPracticeModule';
 
 interface LearnBodyPartProps {
   bodyPart: string;
@@ -18,26 +19,9 @@ const LearnBodyPart: React.FC<LearnBodyPartProps> = ({
   totalBodyParts,
   onNavigate,
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handleBodyPartClick = () => {
-    setIsPlaying(true);
-    
-    if (audioFile) {
-      const audio = new Audio(audioFile);
-      audio.play()
-        .then(() => {
-          console.log('Body part audio started playing successfully');
-        })
-        .catch(error => {
-          console.error('Error playing body part audio:', error);
-        })
-        .finally(() => {
-          setTimeout(() => setIsPlaying(false), 1200);
-        });
-    } else {
-      setTimeout(() => setIsPlaying(false), 1200);
-    }
+  const handlePronunciationSuccess = () => {
+    console.log('Pronunciation success for body part:', bodyPart);
+    // Add visual feedback or other success handling here
   };
 
   const handleNext = () => {
@@ -105,32 +89,21 @@ const LearnBodyPart: React.FC<LearnBodyPartProps> = ({
           </div>
           
           {/* Kannada Body Part Name */}
-          <button
-            onClick={handleBodyPartClick}
-            disabled={isPlaying}
-            className={`text-4xl sm:text-6xl font-bold py-6 px-8 sm:py-8 sm:px-12 rounded-2xl shadow-xl transition-all duration-300 hover:scale-110 animate-glow mb-6 ${
-              isPlaying
-                ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-white animate-bounce-gentle animate-sparkle'
-                : 'bg-gradient-to-br from-blue-300 to-indigo-300 text-blue-800 hover:from-blue-400 hover:to-indigo-400 shadow-lg'
-            }`}
-          >
+          <div className="text-4xl sm:text-6xl font-bold py-6 px-8 sm:py-8 sm:px-12 rounded-2xl shadow-xl mb-6 bg-gradient-to-br from-blue-300 to-indigo-300 text-blue-800 shadow-lg">
             {bodyPart}
-          </button>
-          
-          <br />
-          
-          {/* Play Sound Button */}
-          <button
-            onClick={handleBodyPartClick}
-            disabled={isPlaying}
-            className={`bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 text-white px-8 py-4 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all duration-300 animate-glow ${
-              isPlaying ? 'animate-rainbow scale-110' : 'hover:scale-110'
-            }`}
-          >
-            <Volume2 className="inline-block mr-2 h-6 w-6 animate-sparkle" />
-            {isPlaying ? 'Playing...' : 'Play Sound'}
-          </button>
+          </div>
         </div>
+        
+        {/* Speech Practice Module */}
+        <SpeechPracticeModule
+          item={{
+            english: englishTranslation,
+            kannada: bodyPart,
+            audio_file: audioFile
+          }}
+          type="bodyparts"
+          onPronunciationSuccess={handlePronunciationSuccess}
+        />
         
         {/* Navigation Controls */}
         <div className="flex justify-between items-center">

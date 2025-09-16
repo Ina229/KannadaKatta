@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Volume2, BookOpen, ArrowRight } from 'lucide-react';
+import { BookOpen, ArrowRight } from 'lucide-react';
+import SpeechPracticeModule from './SpeechPracticeModule';
 
 interface LearnLetterProps {
   letter: string;
@@ -18,26 +19,9 @@ const LearnLetter: React.FC<LearnLetterProps> = ({
   totalLetters,
   onNavigate,
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handleLetterClick = () => {
-    setIsPlaying(true);
-    
-    if (audioFile) {
-      const audio = new Audio(`/${audioFile}`);
-      audio.play()
-        .then(() => {
-          console.log('Audio started playing successfully');
-        })
-        .catch(error => {
-          console.error('Error playing audio:', error);
-        })
-        .finally(() => {
-          setTimeout(() => setIsPlaying(false), 1200);
-        });
-    } else {
-      setTimeout(() => setIsPlaying(false), 1200);
-    }
+  const handlePronunciationSuccess = () => {
+    console.log('Pronunciation success for letter:', letter);
+    // Add visual feedback or other success handling here
   };
 
   const handleNext = () => {
@@ -72,33 +56,25 @@ const LearnLetter: React.FC<LearnLetterProps> = ({
             Learn this beautiful letter:
           </div>
           
-          <button
-            onClick={handleLetterClick}
-            disabled={isPlaying}
-            className={`text-8xl font-bold py-8 px-12 rounded-2xl shadow-xl transition-all duration-300 hover:scale-110 animate-glow mb-6 ${
-              isPlaying
-                ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-white animate-bounce-gentle animate-sparkle'
-                : 'bg-gradient-to-br from-orange-300 to-yellow-300 text-orange-800 hover:from-orange-400 hover:to-yellow-400 shadow-lg'
-            }`}
-          >
+          <div className="text-8xl font-bold py-8 px-12 rounded-2xl shadow-xl mb-6 bg-gradient-to-br from-orange-300 to-yellow-300 text-orange-800 shadow-lg">
             {letter}
-          </button>
+          </div>
           
           <div className="text-2xl font-bold text-gray-700 mb-4">
             ({englishTranslation})
           </div>
-          
-          <button
-            onClick={handleLetterClick}
-            disabled={isPlaying}
-            className={`bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all duration-300 animate-glow ${
-              isPlaying ? 'animate-rainbow scale-110' : 'hover:scale-110'
-            }`}
-          >
-            <Volume2 className="inline-block mr-2 h-6 w-6 animate-sparkle" />
-            {isPlaying ? 'Playing...' : 'Play Sound'}
-          </button>
         </div>
+        
+        {/* Speech Practice Module */}
+        <SpeechPracticeModule
+          item={{
+            english: englishTranslation,
+            kannada: letter,
+            audio_file: audioFile
+          }}
+          type="letters"
+          onPronunciationSuccess={handlePronunciationSuccess}
+        />
         
         {/* Navigation Controls */}
         <div className="flex justify-between items-center">
