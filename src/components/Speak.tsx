@@ -32,7 +32,7 @@ interface BodyPartData {
 }
 
 interface SpeakProps {
-  type: 'sentences' | 'colors' | 'numbers' | 'greetings' | 'bodyparts';
+  type: 'sentences' | 'colors' | 'numbers' | 'greetings' | 'bodyparts' | 'animals';
   data: SentenceData[] | ColorData[] | NumberData[] | GreetingData[] | BodyPartData[];
   currentIndex: number;
   totalItems: number;
@@ -440,6 +440,8 @@ const Speak: React.FC<SpeakProps> = ({
         return { title: 'Practice Speaking Body Parts', icon: '🖐️', bgColor: 'from-cyan-200 via-blue-200 to-indigo-200' };
       case 'sentences':
         return { title: 'Practice Speaking Sentences', icon: '💬', bgColor: 'from-red-200 via-pink-200 to-purple-200' };
+      case 'animals':
+        return { title: 'Practice Speaking Animals', icon: '🐾', bgColor: 'from-orange-200 via-yellow-200 to-red-200' };
       default:
         return { title: 'Practice Speaking', icon: '🎤', bgColor: 'from-purple-200 via-pink-200 to-indigo-200' };
     }

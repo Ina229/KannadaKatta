@@ -586,6 +586,10 @@ function App() {
     const savedIndex = localStorage.getItem('kannadaKatta_currentSpeakSentenceIndex');
     return savedIndex ? parseInt(savedIndex, 10) : 0;
   });
+  const [currentSpeakAnimalIndex, setCurrentSpeakAnimalIndex] = useState(() => {
+    const savedIndex = localStorage.getItem('kannadaKatta_currentSpeakAnimalIndex');
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
   const [stars, setStars] = useState(() => {
     const savedStars = localStorage.getItem('kannadaKatta_stars');
     return savedStars ? parseInt(savedStars, 10) : 0;
@@ -679,6 +683,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem('kannadaKatta_currentSpeakSentenceIndex', currentSpeakSentenceIndex.toString());
   }, [currentSpeakSentenceIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('kannadaKatta_currentSpeakAnimalIndex', currentSpeakAnimalIndex.toString());
+  }, [currentSpeakAnimalIndex]);
 
   // Save stars to localStorage whenever stars change
   useEffect(() => {
@@ -964,7 +972,7 @@ function App() {
       if (nextIndex >= kannadaSentences.length) {
         // All sentences completed, go back to speak category
         setCurrentSpeakSentenceIndex(0);
-        setCurrentMode('speak-category');
+        setCurrentMode('learning-category');
         handleSuccess('learn');
       } else {
         // Move to next sentence
@@ -974,6 +982,26 @@ function App() {
       const prevIndex = currentSpeakSentenceIndex - 1;
       if (prevIndex >= 0) {
         setCurrentSpeakSentenceIndex(prevIndex);
+      }
+    }
+  };
+
+  const handleSpeakAnimalNavigation = (direction: 'next' | 'previous') => {
+    if (direction === 'next') {
+      const nextIndex = currentSpeakAnimalIndex + 1;
+      if (nextIndex >= allAnimals.length) {
+        // All animals completed, go back to learning category
+        setCurrentSpeakAnimalIndex(0);
+        setCurrentMode('learning-category');
+        handleSuccess('learn');
+      } else {
+        // Move to next animal
+        setCurrentSpeakAnimalIndex(nextIndex);
+      }
+    } else if (direction === 'previous') {
+      const prevIndex = currentSpeakAnimalIndex - 1;
+      if (prevIndex >= 0) {
+        setCurrentSpeakAnimalIndex(prevIndex);
       }
     }
   };
@@ -1109,6 +1137,7 @@ function App() {
     const savedSpeakGreetingIndex = localStorage.getItem('kannadaKatta_currentSpeakGreetingIndex');
     const savedSpeakBodyPartIndex = localStorage.getItem('kannadaKatta_currentSpeakBodyPartIndex');
     const savedSpeakSentenceIndex = localStorage.getItem('kannadaKatta_currentSpeakSentenceIndex');
+    const savedSpeakAnimalIndex = localStorage.getItem('kannadaKatta_currentSpeakAnimalIndex');
 
     // Set all the saved states
     if (savedMode) setCurrentMode(savedMode);
@@ -1127,6 +1156,7 @@ function App() {
     if (savedSpeakGreetingIndex) setCurrentSpeakGreetingIndex(parseInt(savedSpeakGreetingIndex, 10));
     if (savedSpeakBodyPartIndex) setCurrentSpeakBodyPartIndex(parseInt(savedSpeakBodyPartIndex, 10));
     if (savedSpeakSentenceIndex) setCurrentSpeakSentenceIndex(parseInt(savedSpeakSentenceIndex, 10));
+    if (savedSpeakAnimalIndex) setCurrentSpeakAnimalIndex(parseInt(savedSpeakAnimalIndex, 10));
 
     setShowResumePrompt(false);
   };
@@ -1332,6 +1362,16 @@ function App() {
             currentIndex={currentSpeakSentenceIndex}
             totalItems={kannadaSentences.length}
             onNavigate={handleSpeakSentenceNavigation}
+          />
+        );
+      case 'speak-animals':
+        return (
+          <Speak
+            type="animals"
+            data={kannadaAnimals}
+            currentIndex={currentSpeakAnimalIndex}
+            totalItems={kannadaAnimals.length}
+            onNavigate={handleSpeakAnimalNavigation}
           />
         );
       case 'signup':
