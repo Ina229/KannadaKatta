@@ -603,7 +603,20 @@ function App() {
   // Save current mode to localStorage whenever it changes
   useEffect(() => {
     console.log('🔍 Debug - Saving currentMode to localStorage:', currentMode);
-    localStorage.setItem('kannadaKatta_currentMode', currentMode);
+    
+    // Only save actual learning/game modes, not navigation or auth modes
+    const learningModes = [
+      'learn', 'colors', 'greetings', 'animals', 'words', 'count', 'sentences', 'bodyparts',
+      'speak-colors', 'speak-numbers', 'speak-greetings', 'speak-bodyparts', 'speak-sentences',
+      'practice', 'game'
+    ];
+    
+    if (learningModes.includes(currentMode)) {
+      localStorage.setItem('kannadaKatta_currentMode', currentMode);
+      console.log('🔍 Debug - Saved learning mode to localStorage:', currentMode);
+    } else {
+      console.log('🔍 Debug - Skipped saving navigation/auth mode:', currentMode);
+    }
   }, [currentMode]);
 
   // Save current indices to localStorage whenever they change
@@ -1052,8 +1065,35 @@ function App() {
   const handleSignInSuccess = () => {
     // Check if there's saved learning progress
     const savedMode = localStorage.getItem('kannadaKatta_currentMode');
+    const savedLetterIndex = localStorage.getItem('kannadaKatta_currentLetterIndex');
+    const savedColorIndex = localStorage.getItem('kannadaKatta_currentColorIndex');
+    const savedGreetingIndex = localStorage.getItem('kannadaKatta_currentGreetingIndex');
+    const savedAnimalIndex = localStorage.getItem('kannadaKatta_currentAnimalIndex');
+    const savedWordIndex = localStorage.getItem('kannadaKatta_currentWordIndex');
+    const savedNumberIndex = localStorage.getItem('kannadaKatta_currentNumberIndex');
+    const savedSentenceIndex = localStorage.getItem('kannadaKatta_currentSentenceIndex');
+    const savedBodyPartIndex = localStorage.getItem('kannadaKatta_currentBodyPartIndex');
+    
     console.log('🔍 Debug - savedMode from localStorage:', savedMode);
-    const hasProgress = savedMode && !['auth', 'signup', 'signin', 'landing'].includes(savedMode);
+    console.log('🔍 Debug - savedLetterIndex:', savedLetterIndex);
+    console.log('🔍 Debug - savedColorIndex:', savedColorIndex);
+    
+    // Check if there's a saved learning mode OR any progress indices > 0
+    const hasLearningMode = savedMode && !['auth', 'signup', 'signin', 'landing', 'welcome', 'learning-category', 'games-category'].includes(savedMode);
+    const hasProgressIndices = (
+      (savedLetterIndex && parseInt(savedLetterIndex, 10) > 0) ||
+      (savedColorIndex && parseInt(savedColorIndex, 10) > 0) ||
+      (savedGreetingIndex && parseInt(savedGreetingIndex, 10) > 0) ||
+      (savedAnimalIndex && parseInt(savedAnimalIndex, 10) > 0) ||
+      (savedWordIndex && parseInt(savedWordIndex, 10) > 0) ||
+      (savedNumberIndex && parseInt(savedNumberIndex, 10) > 0) ||
+      (savedSentenceIndex && parseInt(savedSentenceIndex, 10) > 0) ||
+      (savedBodyPartIndex && parseInt(savedBodyPartIndex, 10) > 0)
+    );
+    
+    const hasProgress = hasLearningMode || hasProgressIndices;
+    console.log('🔍 Debug - hasLearningMode:', hasLearningMode);
+    console.log('🔍 Debug - hasProgressIndices:', hasProgressIndices);
     console.log('🔍 Debug - hasProgress calculated:', hasProgress);
     console.log('🔍 Debug - showResumePrompt before setting:', showResumePrompt);
     
