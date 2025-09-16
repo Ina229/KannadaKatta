@@ -1035,23 +1035,6 @@ function App() {
 
   const handleSignOut = () => {
     setCurrentMode('auth');
-    // Clear all learning progress from localStorage
-    localStorage.removeItem('kannadaKatta_currentMode');
-    localStorage.removeItem('kannadaKatta_currentLetterIndex');
-    localStorage.removeItem('kannadaKatta_currentColorIndex');
-    localStorage.removeItem('kannadaKatta_currentGreetingIndex');
-    localStorage.removeItem('kannadaKatta_currentAnimalIndex');
-    localStorage.removeItem('kannadaKatta_currentPracticeQuestionIndex');
-    localStorage.removeItem('kannadaKatta_currentWordIndex');
-    localStorage.removeItem('kannadaKatta_currentMiniGameQuestionIndex');
-    localStorage.removeItem('kannadaKatta_currentNumberIndex');
-    localStorage.removeItem('kannadaKatta_currentSentenceIndex');
-    localStorage.removeItem('kannadaKatta_currentBodyPartIndex');
-    localStorage.removeItem('kannadaKatta_currentSpeakColorIndex');
-    localStorage.removeItem('kannadaKatta_currentSpeakNumberIndex');
-    localStorage.removeItem('kannadaKatta_currentSpeakGreetingIndex');
-    localStorage.removeItem('kannadaKatta_currentSpeakBodyPartIndex');
-    localStorage.removeItem('kannadaKatta_currentSpeakSentenceIndex');
   };
 
   const handleSignUpSuccess = () => {
