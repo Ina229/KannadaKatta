@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Volume2, MessageSquare, ArrowRight } from 'lucide-react';
+import SpeechPracticeModule from './SpeechPracticeModule';
 
 interface SentenceData {
   english: string;
@@ -20,29 +21,11 @@ const LearnSentences: React.FC<LearnSentencesProps> = ({
   totalSentences,
   onNavigate,
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
   const currentSentence = sentences[currentIndex];
 
-  const handleSentenceClick = () => {
-    setIsPlaying(true);
-    
-    if (currentSentence.audio_file) {
-      const audio = new Audio(`/${currentSentence.audio_file}`);
-      audio.play()
-        .then(() => {
-          console.log('Sentence audio started playing successfully');
-        })
-        .catch(error => {
-          console.warn('Audio file not available:', currentSentence.audio_file);
-          // Provide visual feedback even when audio is not available
-        })
-        .finally(() => {
-          setTimeout(() => setIsPlaying(false), 2000);
-        });
-    } else {
-      setTimeout(() => setIsPlaying(false), 2000);
-    }
+  const handlePronunciationSuccess = () => {
+    console.log('Pronunciation success for sentence:', currentSentence.kannada);
+    // Add visual feedback or other success handling here
   };
 
   const handleNext = () => {
@@ -110,32 +93,17 @@ const LearnSentences: React.FC<LearnSentencesProps> = ({
           </div>
           
           {/* Kannada Sentence */}
-          <button
-            onClick={handleSentenceClick}
-            disabled={isPlaying}
-            className={`text-2xl sm:text-3xl md:text-4xl font-bold py-6 px-8 sm:py-8 sm:px-12 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 animate-glow mb-6 ${
-              isPlaying
-                ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-white animate-bounce-gentle animate-sparkle'
-                : 'bg-gradient-to-br from-purple-300 to-pink-300 text-purple-800 hover:from-purple-400 hover:to-pink-400 shadow-lg'
-            }`}
-          >
+          <div className="text-2xl sm:text-3xl md:text-4xl font-bold py-6 px-8 sm:py-8 sm:px-12 rounded-2xl shadow-xl mb-6 bg-gradient-to-br from-purple-300 to-pink-300 text-purple-800">
             {currentSentence.kannada}
-          </button>
-          
-          <br />
-          
-          {/* Play Sound Button */}
-          <button
-            onClick={handleSentenceClick}
-            disabled={isPlaying}
-            className={`bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 text-white px-8 py-4 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all duration-300 animate-glow ${
-              isPlaying ? 'animate-rainbow scale-110' : 'hover:scale-110'
-            }`}
-          >
-            <Volume2 className="inline-block mr-2 h-6 w-6 animate-sparkle" />
-            {isPlaying ? 'Playing...' : 'Play Sound'}
-          </button>
+          </div>
         </div>
+        
+        {/* Speech Practice Module */}
+        <SpeechPracticeModule
+          item={currentSentence}
+          type="sentences"
+          onPronunciationSuccess={handlePronunciationSuccess}
+        />
         
         {/* Navigation Controls */}
         <div className="flex justify-between items-center">

@@ -566,30 +566,6 @@ function App() {
     const savedIndex = localStorage.getItem('kannadaKatta_currentBodyPartIndex');
     return savedIndex ? parseInt(savedIndex, 10) : 0;
   });
-  const [currentSpeakColorIndex, setCurrentSpeakColorIndex] = useState(() => {
-    const savedIndex = localStorage.getItem('kannadaKatta_currentSpeakColorIndex');
-    return savedIndex ? parseInt(savedIndex, 10) : 0;
-  });
-  const [currentSpeakNumberIndex, setCurrentSpeakNumberIndex] = useState(() => {
-    const savedIndex = localStorage.getItem('kannadaKatta_currentSpeakNumberIndex');
-    return savedIndex ? parseInt(savedIndex, 10) : 0;
-  });
-  const [currentSpeakGreetingIndex, setCurrentSpeakGreetingIndex] = useState(() => {
-    const savedIndex = localStorage.getItem('kannadaKatta_currentSpeakGreetingIndex');
-    return savedIndex ? parseInt(savedIndex, 10) : 0;
-  });
-  const [currentSpeakBodyPartIndex, setCurrentSpeakBodyPartIndex] = useState(() => {
-    const savedIndex = localStorage.getItem('kannadaKatta_currentSpeakBodyPartIndex');
-    return savedIndex ? parseInt(savedIndex, 10) : 0;
-  });
-  const [currentSpeakSentenceIndex, setCurrentSpeakSentenceIndex] = useState(() => {
-    const savedIndex = localStorage.getItem('kannadaKatta_currentSpeakSentenceIndex');
-    return savedIndex ? parseInt(savedIndex, 10) : 0;
-  });
-  const [currentSpeakAnimalIndex, setCurrentSpeakAnimalIndex] = useState(() => {
-    const savedIndex = localStorage.getItem('kannadaKatta_currentSpeakAnimalIndex');
-    return savedIndex ? parseInt(savedIndex, 10) : 0;
-  });
   const [stars, setStars] = useState(() => {
     const savedStars = localStorage.getItem('kannadaKatta_stars');
     return savedStars ? parseInt(savedStars, 10) : 0;
@@ -611,7 +587,6 @@ function App() {
     // Only save actual learning/game modes, not navigation or auth modes
     const learningModes = [
       'learn', 'colors', 'greetings', 'animals', 'words', 'count', 'sentences', 'bodyparts',
-      'speak-colors', 'speak-numbers', 'speak-greetings', 'speak-bodyparts', 'speak-sentences',
       'practice', 'game'
     ];
     
@@ -663,30 +638,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem('kannadaKatta_currentBodyPartIndex', currentBodyPartIndex.toString());
   }, [currentBodyPartIndex]);
-
-  useEffect(() => {
-    localStorage.setItem('kannadaKatta_currentSpeakColorIndex', currentSpeakColorIndex.toString());
-  }, [currentSpeakColorIndex]);
-
-  useEffect(() => {
-    localStorage.setItem('kannadaKatta_currentSpeakNumberIndex', currentSpeakNumberIndex.toString());
-  }, [currentSpeakNumberIndex]);
-
-  useEffect(() => {
-    localStorage.setItem('kannadaKatta_currentSpeakGreetingIndex', currentSpeakGreetingIndex.toString());
-  }, [currentSpeakGreetingIndex]);
-
-  useEffect(() => {
-    localStorage.setItem('kannadaKatta_currentSpeakBodyPartIndex', currentSpeakBodyPartIndex.toString());
-  }, [currentSpeakBodyPartIndex]);
-
-  useEffect(() => {
-    localStorage.setItem('kannadaKatta_currentSpeakSentenceIndex', currentSpeakSentenceIndex.toString());
-  }, [currentSpeakSentenceIndex]);
-
-  useEffect(() => {
-    localStorage.setItem('kannadaKatta_currentSpeakAnimalIndex', currentSpeakAnimalIndex.toString());
-  }, [currentSpeakAnimalIndex]);
 
   // Save stars to localStorage whenever stars change
   useEffect(() => {
@@ -886,126 +837,6 @@ function App() {
     }
   };
 
-  const handleSpeakColorNavigation = (direction: 'next' | 'previous') => {
-    if (direction === 'next') {
-      const nextIndex = currentSpeakColorIndex + 1;
-      if (nextIndex >= allColors.length) {
-        // All colors completed, go back to speak category
-        setCurrentSpeakColorIndex(0);
-        setCurrentMode('speak-category');
-        handleSuccess('learn');
-      } else {
-        // Move to next color
-        setCurrentSpeakColorIndex(nextIndex);
-      }
-    } else if (direction === 'previous') {
-      const prevIndex = currentSpeakColorIndex - 1;
-      if (prevIndex >= 0) {
-        setCurrentSpeakColorIndex(prevIndex);
-      }
-    }
-  };
-
-  const handleSpeakNumberNavigation = (direction: 'next' | 'previous') => {
-    if (direction === 'next') {
-      const nextIndex = currentSpeakNumberIndex + 1;
-      if (nextIndex >= kannadaNumbers.length) {
-        // All numbers completed, go back to speak category
-        setCurrentSpeakNumberIndex(0);
-        setCurrentMode('speak-category');
-        handleSuccess('learn');
-      } else {
-        // Move to next number
-        setCurrentSpeakNumberIndex(nextIndex);
-      }
-    } else if (direction === 'previous') {
-      const prevIndex = currentSpeakNumberIndex - 1;
-      if (prevIndex >= 0) {
-        setCurrentSpeakNumberIndex(prevIndex);
-      }
-    }
-  };
-
-  const handleSpeakGreetingNavigation = (direction: 'next' | 'previous') => {
-    if (direction === 'next') {
-      const nextIndex = currentSpeakGreetingIndex + 1;
-      if (nextIndex >= kannadaGreetings.length) {
-        // All greetings completed, go back to speak category
-        setCurrentSpeakGreetingIndex(0);
-        setCurrentMode('speak-category');
-        handleSuccess('learn');
-      } else {
-        // Move to next greeting
-        setCurrentSpeakGreetingIndex(nextIndex);
-      }
-    } else if (direction === 'previous') {
-      const prevIndex = currentSpeakGreetingIndex - 1;
-      if (prevIndex >= 0) {
-        setCurrentSpeakGreetingIndex(prevIndex);
-      }
-    }
-  };
-
-  const handleSpeakBodyPartNavigation = (direction: 'next' | 'previous') => {
-    if (direction === 'next') {
-      const nextIndex = currentSpeakBodyPartIndex + 1;
-      if (nextIndex >= allBodyParts.length) {
-        // All body parts completed, go back to speak category
-        setCurrentSpeakBodyPartIndex(0);
-        setCurrentMode('speak-category');
-        handleSuccess('learn');
-      } else {
-        // Move to next body part
-        setCurrentSpeakBodyPartIndex(nextIndex);
-      }
-    } else if (direction === 'previous') {
-      const prevIndex = currentSpeakBodyPartIndex - 1;
-      if (prevIndex >= 0) {
-        setCurrentSpeakBodyPartIndex(prevIndex);
-      }
-    }
-  };
-
-  const handleSpeakSentenceNavigation = (direction: 'next' | 'previous') => {
-    if (direction === 'next') {
-      const nextIndex = currentSpeakSentenceIndex + 1;
-      if (nextIndex >= kannadaSentences.length) {
-        // All sentences completed, go back to speak category
-        setCurrentSpeakSentenceIndex(0);
-        setCurrentMode('learning-category');
-        handleSuccess('learn');
-      } else {
-        // Move to next sentence
-        setCurrentSpeakSentenceIndex(nextIndex);
-      }
-    } else if (direction === 'previous') {
-      const prevIndex = currentSpeakSentenceIndex - 1;
-      if (prevIndex >= 0) {
-        setCurrentSpeakSentenceIndex(prevIndex);
-      }
-    }
-  };
-
-  const handleSpeakAnimalNavigation = (direction: 'next' | 'previous') => {
-    if (direction === 'next') {
-      const nextIndex = currentSpeakAnimalIndex + 1;
-      if (nextIndex >= allAnimals.length) {
-        // All animals completed, go back to learning category
-        setCurrentSpeakAnimalIndex(0);
-        setCurrentMode('learning-category');
-        handleSuccess('learn');
-      } else {
-        // Move to next animal
-        setCurrentSpeakAnimalIndex(nextIndex);
-      }
-    } else if (direction === 'previous') {
-      const prevIndex = currentSpeakAnimalIndex - 1;
-      if (prevIndex >= 0) {
-        setCurrentSpeakAnimalIndex(prevIndex);
-      }
-    }
-  };
-
   const handlePracticeMatchComplete = () => {
     handleSuccess('practice');
     
@@ -1132,12 +963,6 @@ function App() {
     const savedNumberIndex = localStorage.getItem('kannadaKatta_currentNumberIndex');
     const savedSentenceIndex = localStorage.getItem('kannadaKatta_currentSentenceIndex');
     const savedBodyPartIndex = localStorage.getItem('kannadaKatta_currentBodyPartIndex');
-    const savedSpeakColorIndex = localStorage.getItem('kannadaKatta_currentSpeakColorIndex');
-    const savedSpeakNumberIndex = localStorage.getItem('kannadaKatta_currentSpeakNumberIndex');
-    const savedSpeakGreetingIndex = localStorage.getItem('kannadaKatta_currentSpeakGreetingIndex');
-    const savedSpeakBodyPartIndex = localStorage.getItem('kannadaKatta_currentSpeakBodyPartIndex');
-    const savedSpeakSentenceIndex = localStorage.getItem('kannadaKatta_currentSpeakSentenceIndex');
-    const savedSpeakAnimalIndex = localStorage.getItem('kannadaKatta_currentSpeakAnimalIndex');
 
     // Set all the saved states
     if (savedMode) setCurrentMode(savedMode);
@@ -1151,12 +976,6 @@ function App() {
     if (savedNumberIndex) setCurrentNumberIndex(parseInt(savedNumberIndex, 10));
     if (savedSentenceIndex) setCurrentSentenceIndex(parseInt(savedSentenceIndex, 10));
     if (savedBodyPartIndex) setCurrentBodyPartIndex(parseInt(savedBodyPartIndex, 10));
-    if (savedSpeakColorIndex) setCurrentSpeakColorIndex(parseInt(savedSpeakColorIndex, 10));
-    if (savedSpeakNumberIndex) setCurrentSpeakNumberIndex(parseInt(savedSpeakNumberIndex, 10));
-    if (savedSpeakGreetingIndex) setCurrentSpeakGreetingIndex(parseInt(savedSpeakGreetingIndex, 10));
-    if (savedSpeakBodyPartIndex) setCurrentSpeakBodyPartIndex(parseInt(savedSpeakBodyPartIndex, 10));
-    if (savedSpeakSentenceIndex) setCurrentSpeakSentenceIndex(parseInt(savedSpeakSentenceIndex, 10));
-    if (savedSpeakAnimalIndex) setCurrentSpeakAnimalIndex(parseInt(savedSpeakAnimalIndex, 10));
 
     setShowResumePrompt(false);
   };
@@ -1302,76 +1121,6 @@ function App() {
             currentIndex={currentBodyPartIndex}
             totalBodyParts={allBodyParts.length}
             onNavigate={handleLearnBodyPartNavigation}
-          />
-        );
-      case 'speak-category':
-        return (
-          <Speak
-            type="colors"
-            data={kannadaColors}
-            currentIndex={currentSpeakColorIndex}
-            totalItems={kannadaColors.length}
-            onNavigate={handleSpeakColorNavigation}
-          />
-        );
-      case 'speak-colors':
-        return (
-          <Speak
-            type="colors"
-            data={kannadaColors}
-            currentIndex={currentSpeakColorIndex}
-            totalItems={kannadaColors.length}
-            onNavigate={handleSpeakColorNavigation}
-          />
-        );
-      case 'speak-numbers':
-        return (
-          <Speak
-            type="numbers"
-            data={kannadaNumbers}
-            currentIndex={currentSpeakNumberIndex}
-            totalItems={kannadaNumbers.length}
-            onNavigate={handleSpeakNumberNavigation}
-          />
-        );
-      case 'speak-greetings':
-        return (
-          <Speak
-            type="greetings"
-            data={kannadaGreetings}
-            currentIndex={currentSpeakGreetingIndex}
-            totalItems={kannadaGreetings.length}
-            onNavigate={handleSpeakGreetingNavigation}
-          />
-        );
-      case 'speak-bodyparts':
-        return (
-          <Speak
-            type="bodyparts"
-            data={kannadaBodyParts}
-            currentIndex={currentSpeakBodyPartIndex}
-            totalItems={kannadaBodyParts.length}
-            onNavigate={handleSpeakBodyPartNavigation}
-          />
-        );
-      case 'speak-sentences':
-        return (
-          <Speak
-            type="sentences"
-            data={kannadaSentences}
-            currentIndex={currentSpeakSentenceIndex}
-            totalItems={kannadaSentences.length}
-            onNavigate={handleSpeakSentenceNavigation}
-          />
-        );
-      case 'speak-animals':
-        return (
-          <Speak
-            type="animals"
-            data={kannadaAnimals}
-            currentIndex={currentSpeakAnimalIndex}
-            totalItems={kannadaAnimals.length}
-            onNavigate={handleSpeakAnimalNavigation}
           />
         );
       case 'signup':

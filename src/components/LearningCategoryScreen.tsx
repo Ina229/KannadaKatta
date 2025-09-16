@@ -79,51 +79,6 @@ export default function LearningCategoryScreen({ onModeSelect, onBack }: Learnin
       color: 'from-cyan-500 to-blue-600',
       hoverColor: 'hover:from-cyan-600 hover:to-blue-700',
       emoji: '🖐️'
-    },
-    {
-      id: 'speak-colors',
-      title: 'Speak Colors',
-      description: 'Practice pronouncing colors in Kannada',
-      icon: Palette,
-      color: 'from-pink-500 to-rose-600',
-      hoverColor: 'hover:from-pink-600 hover:to-rose-700',
-      emoji: '🎨'
-    },
-    {
-      id: 'speak-numbers',
-      title: 'Speak Numbers',
-      description: 'Practice counting from 1 to 20 in Kannada',
-      icon: Hash,
-      color: 'from-teal-500 to-cyan-600',
-      hoverColor: 'hover:from-teal-600 hover:to-cyan-700',
-      emoji: '🔢'
-    },
-    {
-      id: 'speak-greetings',
-      title: 'Speak Greetings',
-      description: 'Practice essential greetings and polite expressions',
-      icon: MessageCircle,
-      color: 'from-green-500 to-emerald-600',
-      hoverColor: 'hover:from-green-600 hover:to-emerald-700',
-      emoji: '👋'
-    },
-    {
-      id: 'speak-bodyparts',
-      title: 'Speak Body Parts',
-      description: 'Practice pronouncing body parts in Kannada',
-      icon: Hand,
-      color: 'from-cyan-500 to-blue-600',
-      hoverColor: 'hover:from-cyan-600 hover:to-blue-700',
-      emoji: '🖐️'
-    },
-    {
-      id: 'speak-animals',
-      title: 'Speak Animals',
-      description: 'Practice pronouncing animal names in Kannada',
-      icon: Mic,
-      color: 'from-red-500 to-pink-600',
-      hoverColor: 'hover:from-red-600 hover:to-pink-700',
-      emoji: '🎤'
     }
   ];
 
